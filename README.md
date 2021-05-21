@@ -136,7 +136,7 @@ new CalendarOfMonth(year, month, [startWeekDayIndex])
 ```
 
 ### Parameters
-* `year`(Number) and `month`(Number): The year and month number for generating the calendar. 
+* `year`(Number) and `month`(Number): The year and month number for generating the calendar. Note that unlike in JavaScript, here month starts with `1`(January).
 * `startWeekDayIndex`(Number) *Optional*: It represents the day to start the week with. `0` means Sunday and it goes on incrementally until 6 means Saturday. 
 
 ### Return value
@@ -146,7 +146,7 @@ It's `toString()` method formats the calendar a little differently than the orig
 ```javascript
 import {CalendarOfMonth} from "headless-calendar";
 
-const month = new CalendarOfMonth(2021, 0);
+const month = new CalendarOfMonth(2021, 1);
 console.log(month.toString())
 
 /*
