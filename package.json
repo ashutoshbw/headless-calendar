@@ -4,7 +4,9 @@
   "description": "A tiny UI-agnostic calendar generator.",
   "type": "module",
   "main": "dist/index.cjs",
-  "scripts": {},
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts"
+  },
   "license": "MIT",
   "author": "Ashutosh Biswas",
   "keywords": [
