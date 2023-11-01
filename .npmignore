@@ -1,1 +1,4 @@
-node_modules/
+.changeset
+.github
+src
+tsconfig.json

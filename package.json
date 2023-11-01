@@ -1,31 +1,29 @@
 {
   "name": "headless-calendar",
   "version": "1.0.0",
-  "description": "A simple and easy to use JavaScript library that provides common calendar functionalities for making completely customizable calendar UI.",
-  "main": "cjs/index.js",
-  "module": "src/index.js",
-  "scripts": {
-    "test": "echo \"No test specified\"",
-    "clean": "shx rm -rf cjs",
-    "build": "npm run clean && babel src -d cjs",
-    "prepublishOnly": "npm run build"
-  },
+  "description": "A tiny UI-agnostic calendar generator.",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "scripts": {},
+  "license": "MIT",
+  "author": "Ashutosh Biswas",
   "keywords": [
     "calendar",
-    "position",
     "headless",
-    "library"
+    "UI-agnostic",
+    "day position",
+    "weekday names",
+    "month names"
   ],
-  "author": "Ashutosh Biswas (https://ashutoshbiswas.netlify.app/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ashutoshbw314/headless-calendar/issues"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ashutoshbw/headless-calendar.git"
   },
-  "repository": "github:ashutoshbw314/headless-calendar",
+  "bugs": "https://github.com/ashutoshbw/headless-calendar/issues",
   "devDependencies": {
-    "@babel/cli": "^7.13.16",
-    "@babel/plugin-transform-modules-commonjs": "^7.14.0",
-    "babel-plugin-add-module-exports": "^1.0.4",
-    "shx": "^0.3.3"
+    "@changesets/cli": "^2.26.2",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
   }
 }
