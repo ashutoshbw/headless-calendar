@@ -1,4 +1,5 @@
 import {
+  FullDate,
   ONE_DAY_IN_MILLISECONDS,
   DEFAULT_LOCALE,
   DEFAULT_START_WEEKDAY_INDEX,
@@ -8,7 +9,7 @@ import {
   getMaxWeekIndex,
   getDayNameOf,
   getMonthNameOf,
-  getLocaleDateString,
+  getLocaleDateArray,
 } from "./utils.js";
 
 interface Day {
@@ -27,8 +28,8 @@ export class Calendar {
   private startDate: Date;
   private endDate: Date;
   constructor(
-    startDate: string,
-    endDate: string,
+    startDate: FullDate,
+    endDate: FullDate,
     private startWeekDayIndex = DEFAULT_START_WEEKDAY_INDEX,
     private locale = DEFAULT_LOCALE
   ) {
@@ -101,11 +102,13 @@ export class Calendar {
     startWeekdayIndex = DEFAULT_START_WEEKDAY_INDEX,
     locale = DEFAULT_LOCALE
   ) {
-    let startDateStr = `${year}-${month}-1`;
-    let endDateStr = `${year}-${month}-${new Date(
-      Date.UTC(year, month, 0)
-    ).getUTCDate()}`;
-    return new Calendar(startDateStr, endDateStr, startWeekdayIndex, locale);
+    let startDate = [year, month, 1];
+    let endDate = [
+      year,
+      month,
+      new Date(Date.UTC(year, month, 0)).getUTCDate(),
+    ];
+    return new Calendar(startDate, endDate, startWeekdayIndex, locale);
   }
 
   static ofYear(
@@ -114,8 +117,8 @@ export class Calendar {
     locale = DEFAULT_LOCALE
   ) {
     return new Calendar(
-      `${year}-1-1`,
-      `${year}-12-31`,
+      [year, 1, 1],
+      [year, 12, 31],
       startWeekDayIndex,
       locale
     );
@@ -130,8 +133,8 @@ export class Calendar {
       endDate.getTime() - ONE_DAY_IN_MILLISECONDS * 364
     );
     return new Calendar(
-      getLocaleDateString(startDate),
-      getLocaleDateString(endDate),
+      getLocaleDateArray(startDate),
+      getLocaleDateArray(endDate),
       startWeekdayIndex,
       locale
     );

@@ -3,17 +3,19 @@ interface FormatOptions {
   format: "long" | "short" | "narrow";
 }
 
+export type FullDate = number[];
+
 export const ONE_DAY_IN_MILLISECONDS = 86400000;
 export const DEFAULT_LOCALE = "en-US";
 export const DEFAULT_START_WEEKDAY_INDEX = 0;
 
-export function convertToJSDate(dateStr: string) {
-  const [year, month, date] = dateStr.split("-").map((s) => +s);
+export function convertToJSDate(fullDate: FullDate) {
+  const [year, month, date] = fullDate;
   return new Date(Date.UTC(year, month - 1, date));
 }
 
-export function getLocaleDateString(date: Date) {
-  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+export function getLocaleDateArray(date: Date) {
+  return [date.getFullYear(), date.getMonth() + 1, date.getDate()];
 }
 
 export function getCoverage(dateA: Date, dateB: Date) {
@@ -32,7 +34,7 @@ export function getRelativeWeekdayIndex(date: Date, startWeekdayIndex: number) {
 export function getMaxWeekIndex(
   startDate: Date,
   endDate: Date,
-  startWeekdayIndex: number,
+  startWeekdayIndex: number
 ) {
   const dayIndex = getRelativeWeekdayIndex(startDate, startWeekdayIndex);
 
