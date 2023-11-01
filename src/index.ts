@@ -29,7 +29,7 @@ export class Calendar {
     startDate: string,
     endDate: string,
     private startWeekDayIndex = DEFAULT_START_WEEKDAY_INDEX,
-    private locale = DEFAULT_LOCALE,
+    private locale = DEFAULT_LOCALE
   ) {
     this.startDate = convertToJSDate(startDate);
     this.endDate = convertToJSDate(endDate);
@@ -47,7 +47,7 @@ export class Calendar {
         getDayNameOf(new Date(Date.UTC(2023, 0, date)), {
           locale: this.locale,
           format,
-        }),
+        })
       );
     });
 
@@ -71,7 +71,7 @@ export class Calendar {
         weekIndex: getMaxWeekIndex(
           this.startDate,
           curDate,
-          this.startWeekDayIndex,
+          this.startWeekDayIndex
         ),
         name: (format = "long") => {
           return getDayNameOf(curDate, {
@@ -92,5 +92,18 @@ export class Calendar {
       curDate = new Date(curDate.getTime() + ONE_DAY_IN_MILLISECONDS);
       count++;
     }
+  }
+
+  static ofMonth(
+    year: number,
+    month: number,
+    startWeekdayIndex = DEFAULT_START_WEEKDAY_INDEX,
+    locale = DEFAULT_LOCALE
+  ) {
+    let startDateStr = `${year}-${month}-1`;
+    let endDateStr = `${year}-${month}-${new Date(
+      Date.UTC(year, month, 0)
+    ).getUTCDate()}`;
+    return new Calendar(startDateStr, endDateStr, startWeekdayIndex, locale);
   }
 }
