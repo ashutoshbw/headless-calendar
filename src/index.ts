@@ -8,6 +8,7 @@ import {
   getMaxWeekIndex,
   getDayNameOf,
   getMonthNameOf,
+  getLocaleDateString,
 } from "./utils.js";
 
 interface Day {
@@ -116,6 +117,22 @@ export class Calendar {
       `${year}-1-1`,
       `${year}-12-31`,
       startWeekDayIndex,
+      locale
+    );
+  }
+
+  static ofLastYear(
+    startWeekdayIndex = DEFAULT_START_WEEKDAY_INDEX,
+    locale = DEFAULT_LOCALE
+  ) {
+    const endDate = new Date();
+    const startDate = new Date(
+      endDate.getTime() - ONE_DAY_IN_MILLISECONDS * 364
+    );
+    return new Calendar(
+      getLocaleDateString(startDate),
+      getLocaleDateString(endDate),
+      startWeekdayIndex,
       locale
     );
   }
