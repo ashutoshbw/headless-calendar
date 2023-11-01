@@ -106,4 +106,17 @@ export class Calendar {
     ).getUTCDate()}`;
     return new Calendar(startDateStr, endDateStr, startWeekdayIndex, locale);
   }
+
+  static ofYear(
+    year: number,
+    startWeekDayIndex = DEFAULT_START_WEEKDAY_INDEX,
+    locale = DEFAULT_LOCALE
+  ) {
+    return new Calendar(
+      `${year}-1-1`,
+      `${year}-12-31`,
+      startWeekDayIndex,
+      locale
+    );
+  }
 }
