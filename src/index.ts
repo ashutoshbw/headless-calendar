@@ -139,4 +139,13 @@ export class Calendar {
       locale
     );
   }
+
+  static custom(
+    startDate: FullDate,
+    endDate: FullDate,
+    startWeekDayIndex = DEFAULT_START_WEEKDAY_INDEX,
+    locale = DEFAULT_LOCALE
+  ) {
+    return new Calendar(startDate, endDate, startWeekDayIndex, locale);
+  }
 }
