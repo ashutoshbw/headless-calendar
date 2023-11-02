@@ -9,8 +9,8 @@ import {
   getMaxWeekIndex,
   getDayNameOf,
   getMonthNameOf,
-  getLocaleDateArray,
-} from "./utils.js";
+  getLocaleDateArray
+} from './utils.js';
 
 interface Day {
   count: number;
@@ -19,8 +19,8 @@ interface Day {
   year: number;
   weekdayIndex: number;
   weekIndex: number;
-  name: (format?: "long" | "short" | "narrow") => string;
-  monthName: (format?: "long" | "short" | "narrow") => string;
+  name: (format?: 'long' | 'short' | 'narrow') => string;
+  monthName: (format?: 'long' | 'short' | 'narrow') => string;
   isFirstDayOfWeekAndMonth: boolean;
 }
 
@@ -41,21 +41,21 @@ export class Calendar {
     return getCoverage(this.startDate, this.endDate);
   }
 
-  getWeekdayNames(format: "long" | "short" | "narrow" = "long") {
+  getWeekdayNames(format: 'long' | 'short' | 'narrow' = 'long') {
     const dayNames: string[] = [];
 
     [1, 2, 3, 4, 5, 6, 7].forEach((date) => {
       dayNames.push(
         getDayNameOf(new Date(Date.UTC(2023, 0, date)), {
           locale: this.locale,
-          format,
+          format
         })
       );
     });
 
     return [
       ...dayNames.slice(this.startWeekDayIndex),
-      ...dayNames.slice(0, this.startWeekDayIndex),
+      ...dayNames.slice(0, this.startWeekDayIndex)
     ];
   }
 
@@ -75,21 +75,21 @@ export class Calendar {
           curDate,
           this.startWeekDayIndex
         ),
-        name: (format = "long") => {
+        name: (format = 'long') => {
           return getDayNameOf(curDate, {
             locale: this.locale,
-            format,
+            format
           });
         },
-        monthName: (format = "long") => {
+        monthName: (format = 'long') => {
           return getMonthNameOf(curDate, {
             locale: this.locale,
-            format,
+            format
           });
         },
         get isFirstDayOfWeekAndMonth() {
           return this.weekdayIndex == 0 && this.date >= 1 && this.date <= 7;
-        },
+        }
       };
       curDate = new Date(curDate.getTime() + ONE_DAY_IN_MILLISECONDS);
       count++;
@@ -106,7 +106,7 @@ export class Calendar {
     const endDate = [
       year,
       month,
-      new Date(Date.UTC(year, month, 0)).getUTCDate(),
+      new Date(Date.UTC(year, month, 0)).getUTCDate()
     ];
     return new Calendar(startDate, endDate, startWeekdayIndex, locale);
   }

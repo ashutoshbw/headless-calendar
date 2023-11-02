@@ -1,12 +1,12 @@
 interface FormatOptions {
   locale: string;
-  format: "long" | "short" | "narrow";
+  format: 'long' | 'short' | 'narrow';
 }
 
 export type FullDate = number[];
 
 export const ONE_DAY_IN_MILLISECONDS = 86400000;
-export const DEFAULT_LOCALE = "en-US";
+export const DEFAULT_LOCALE = 'en-US';
 export const DEFAULT_START_WEEKDAY_INDEX = 0;
 
 export function convertToJSDate(fullDate: FullDate) {
@@ -45,7 +45,7 @@ export function getMaxWeekIndex(
 export function getDayNameOf(date: Date, { locale, format }: FormatOptions) {
   const formatter = new Intl.DateTimeFormat(locale, {
     weekday: format,
-    timeZone: "UTC",
+    timeZone: 'UTC'
   });
   return formatter.format(date);
 }
@@ -53,7 +53,7 @@ export function getDayNameOf(date: Date, { locale, format }: FormatOptions) {
 export function getMonthNameOf(date: Date, { locale, format }: FormatOptions) {
   const formatter = new Intl.DateTimeFormat(locale, {
     month: format,
-    timeZone: "UTC",
+    timeZone: 'UTC'
   });
   return formatter.format(date);
 }
