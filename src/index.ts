@@ -102,8 +102,8 @@ export class Calendar {
     startWeekdayIndex = DEFAULT_START_WEEKDAY_INDEX,
     locale = DEFAULT_LOCALE
   ) {
-    let startDate = [year, month, 1];
-    let endDate = [
+    const startDate = [year, month, 1];
+    const endDate = [
       year,
       month,
       new Date(Date.UTC(year, month, 0)).getUTCDate(),

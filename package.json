@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vitest",
     "test": "vitest run",
-    "build": "tsup src/index.ts --format cjs,esm --dts"
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "lint": "eslint . --ext .ts"
   },
   "license": "MIT",
   "author": "Ashutosh Biswas",
@@ -26,6 +27,9 @@
   "bugs": "https://github.com/ashutoshbw/headless-calendar/issues",
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "eslint": "^8.52.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
     "vitest": "^0.34.6"
