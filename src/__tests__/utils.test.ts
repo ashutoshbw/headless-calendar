@@ -7,6 +7,6 @@ describe('convertToJSDate()', () => {
     const monthNumber = 1;
     const fullDate: FullDate = [2023, monthNumber, 1];
     const resultDate = convertToJSDate(fullDate);
-    expect(resultDate.getUTCMonth()).toBe(monthNumber - 1);
+    expect(resultDate.getUTCMonth()).toBe(monthNumber - 1); // in JS Date, month starts with 0
   });
 });
