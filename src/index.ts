@@ -35,6 +35,10 @@ export class Calendar {
   ) {
     this.startDate = convertToJSDate(startDate);
     this.endDate = convertToJSDate(endDate);
+
+    if (this.startDate.getTime() > this.endDate.getTime()) {
+      throw new Error('startDate should be less than or equal to endDate');
+    }
   }
 
   get length() {
