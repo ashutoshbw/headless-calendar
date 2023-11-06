@@ -22,6 +22,12 @@ describe('getLocaleDateArray()', () => {
     const result = getLocaleDateArray(now);
     expect(result[1]).toBe(now.getMonth() + 1); // in JS Date, month starts with 0
   });
+
+  it('returned array should have length 3', () => {
+    const now = new Date();
+    const result = getLocaleDateArray(now);
+    expect(result.length).toBe(3);
+  });
 });
 
 describe('getCoverage()', () => {
