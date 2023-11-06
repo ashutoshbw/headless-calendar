@@ -13,3 +13,10 @@ describe('Calendar()', () => {
     );
   });
 });
+
+describe('Calendar.ofLastYear()', () => {
+  it('should have 365 days', () => {
+    const cal = Calendar.ofLastYear(2023);
+    expect(cal.length).toBe(365);
+  });
+});
