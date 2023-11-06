@@ -18,6 +18,9 @@ export function getLocaleDateArray(date: Date) {
   return [date.getFullYear(), date.getMonth() + 1, date.getDate()];
 }
 
+// This function assumes its input dates's time part having
+// 0 minutes 0 seconds and 0 milliseconds. This is equivaleant
+// as the output of convertToJSDate function.
 export function getCoverage(dateA: Date, dateB: Date) {
   return (
     Math.abs(dateA.getTime() - dateB.getTime()) / ONE_DAY_IN_MILLISECONDS + 1

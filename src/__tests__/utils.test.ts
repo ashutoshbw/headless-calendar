@@ -1,6 +1,11 @@
 import { it, expect, describe } from 'vitest';
 
-import { FullDate, convertToJSDate, getLocaleDateArray } from '../utils';
+import {
+  FullDate,
+  convertToJSDate,
+  getLocaleDateArray,
+  getCoverage
+} from '../utils';
 
 describe('convertToJSDate()', () => {
   it('month should start with 1', () => {
@@ -16,5 +21,12 @@ describe('getLocaleDateArray()', () => {
     const now = new Date();
     const result = getLocaleDateArray(now);
     expect(result[1]).toBe(now.getMonth() + 1); // in JS Date, month starts with 0
+  });
+});
+
+describe('getCoverage()', () => {
+  it('should include boundary dates', () => {
+    const date = new Date(Date.UTC(2023, 10, 6));
+    expect(getCoverage(date, date)).toBe(1);
   });
 });
