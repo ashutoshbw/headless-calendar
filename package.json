@@ -1,7 +1,7 @@
 {
   "name": "headless-calendar",
   "version": "1.0.0",
-  "description": "A tiny UI-agnostic calendar generator.",
+  "description": "A tiny tool to help you make your dream Calendar UI.",
   "type": "module",
   "main": "dist/index.cjs",
   "scripts": {
@@ -10,7 +10,7 @@
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' '*.md' --write"
   },
   "license": "MIT",
   "author": "Ashutosh Biswas",
