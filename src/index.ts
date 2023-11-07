@@ -21,7 +21,7 @@ interface Day {
   weekIndex: number;
   name: (format?: 'long' | 'short' | 'narrow') => string;
   monthName: (format?: 'long' | 'short' | 'narrow') => string;
-  isFirstDayOfWeekAndMonth: boolean;
+  isFirstStartWeekdayOfMonth: boolean;
 }
 
 export class Calendar {
@@ -91,7 +91,7 @@ export class Calendar {
             format
           });
         },
-        get isFirstDayOfWeekAndMonth() {
+        get isFirstStartWeekdayOfMonth() {
           return this.weekdayIndex == 0 && this.date >= 1 && this.date <= 7;
         }
       };
