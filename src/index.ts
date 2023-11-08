@@ -7,9 +7,8 @@ import {
   getCoverage,
   getRelativeWeekdayIndex,
   getMaxWeekIndex,
-  getDayNameOf,
-  getMonthNameOf,
-  getLocaleDateArray
+  getLocaleDateArray,
+  getFormatter
 } from './utils.js';
 
 interface Day {
@@ -50,10 +49,9 @@ export class Calendar {
 
     [1, 2, 3, 4, 5, 6, 7].forEach((date) => {
       dayNames.push(
-        getDayNameOf(new Date(Date.UTC(2023, 0, date)), {
-          locale: this.locale,
-          format
-        })
+        getFormatter(this.locale, 'weekday', format).format(
+          new Date(Date.UTC(2023, 0, date))
+        )
       );
     });
 
@@ -80,16 +78,10 @@ export class Calendar {
           this.startWeekDayIndex
         ),
         name: (format = 'long') => {
-          return getDayNameOf(curDate, {
-            locale: this.locale,
-            format
-          });
+          return getFormatter(this.locale, 'weekday', format).format(curDate);
         },
         monthName: (format = 'long') => {
-          return getMonthNameOf(curDate, {
-            locale: this.locale,
-            format
-          });
+          return getFormatter(this.locale, 'month', format).format(curDate);
         },
         get isFirstStartWeekdayOfMonth() {
           return this.weekdayIndex == 0 && this.date >= 1 && this.date <= 7;
