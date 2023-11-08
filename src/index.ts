@@ -8,7 +8,7 @@ import {
   getRelativeWeekdayIndex,
   getMaxWeekIndex,
   getLocaleDateArray,
-  getFormatter
+  formatDateComponent
 } from './utils.js';
 
 interface Day {
@@ -49,8 +49,11 @@ export class Calendar {
 
     [1, 2, 3, 4, 5, 6, 7].forEach((date) => {
       dayNames.push(
-        getFormatter(this.locale, 'weekday', format).format(
-          new Date(Date.UTC(2023, 0, date))
+        formatDateComponent(
+          new Date(Date.UTC(2023, 0, date)),
+          this.locale,
+          'weekday',
+          format
         )
       );
     });
@@ -78,10 +81,10 @@ export class Calendar {
           this.startWeekDayIndex
         ),
         name: (format = 'long') => {
-          return getFormatter(this.locale, 'weekday', format).format(curDate);
+          return formatDateComponent(curDate, this.locale, 'weekday', format);
         },
         monthName: (format = 'long') => {
-          return getFormatter(this.locale, 'month', format).format(curDate);
+          return formatDateComponent(curDate, this.locale, 'month', format);
         },
         get isFirstStartWeekdayOfMonth() {
           return this.weekdayIndex == 0 && this.date >= 1 && this.date <= 7;

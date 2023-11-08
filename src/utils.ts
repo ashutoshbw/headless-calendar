@@ -40,7 +40,8 @@ export function getMaxWeekIndex(
   return Math.ceil((dayIndex + length) / 7) - 1;
 }
 
-export function getFormatter(
+export function formatDateComponent(
+  date: Date,
   locale: string,
   component: string,
   format: string
@@ -49,5 +50,5 @@ export function getFormatter(
     calendar: 'gregory',
     timeZone: 'UTC',
     [component]: format
-  });
+  }).format(date);
 }
