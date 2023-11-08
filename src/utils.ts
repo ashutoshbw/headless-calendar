@@ -47,6 +47,7 @@ export function getMaxWeekIndex(
 
 export function getDayNameOf(date: Date, { locale, format }: FormatOptions) {
   const formatter = new Intl.DateTimeFormat(locale, {
+    calendar: 'gregory',
     weekday: format,
     timeZone: 'UTC'
   });
@@ -55,6 +56,7 @@ export function getDayNameOf(date: Date, { locale, format }: FormatOptions) {
 
 export function getMonthNameOf(date: Date, { locale, format }: FormatOptions) {
   const formatter = new Intl.DateTimeFormat(locale, {
+    calendar: 'gregory',
     month: format,
     timeZone: 'UTC'
   });
