@@ -13,11 +13,12 @@ import {
 
 interface Day {
   count: number;
-  date: number;
+  day: number;
   month: number;
   year: number;
   weekdayIndex: number;
   weekIndex: number;
+  localizedDay: (format?: 'numeric' | '2-digit') => string;
   name: (format?: 'long' | 'short' | 'narrow') => string;
   monthName: (format?: 'long' | 'short' | 'narrow') => string;
   isFirstStartWeekdayOfMonth: boolean;
@@ -71,7 +72,7 @@ export class Calendar {
     while (curDate.getTime() <= endDateTimeStamp) {
       yield {
         count,
-        date: curDate.getUTCDate(),
+        day: curDate.getUTCDate(),
         month: curDate.getUTCMonth() + 1,
         year: curDate.getUTCFullYear(),
         weekdayIndex: getRelativeWeekdayIndex(curDate, this.startWeekDayIndex),
@@ -80,6 +81,9 @@ export class Calendar {
           curDate,
           this.startWeekDayIndex
         ),
+        localizedDay: (format = 'numeric') => {
+          return formatDateComponent(curDate, this.locale, 'day', format);
+        },
         name: (format = 'long') => {
           return formatDateComponent(curDate, this.locale, 'weekday', format);
         },
@@ -87,7 +91,7 @@ export class Calendar {
           return formatDateComponent(curDate, this.locale, 'month', format);
         },
         get isFirstStartWeekdayOfMonth() {
-          return this.weekdayIndex == 0 && this.date >= 1 && this.date <= 7;
+          return this.weekdayIndex == 0 && this.day >= 1 && this.day <= 7;
         }
       };
       curDate = new Date(curDate.getTime() + ONE_DAY_IN_MILLISECONDS);
