@@ -95,4 +95,4 @@ It will start the week at Monday. Below is the what the different values `startW
 | 5                   | Friday        |
 | 6                   | Saturday      |
 
-<details>
+</details>
