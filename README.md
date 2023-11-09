@@ -62,10 +62,35 @@ console.log(lastYear.getWeekdayNames());
 // [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ]
 ```
 
-If we customize the calendar to start on Monday then `lastYear.getWeekdayNames()` will produce:
+If you customize the calendar to start on Monday(see Customization section for how to) then `lastYear.getWeekdayNames()` will produce:
 
 ```js
 ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 ```
 
-Next we will see how you can customize the calendar in question answer style.
+Next we will see how you can customize the calendar and some helpful info in question answer style.
+
+## Customization
+
+### How to start the week on other day than Sunday?
+
+<details>
+  <summary>Click to expand</summary>
+  You can pass config object on any `Calendar.<staticMethod>`s to set your preferred week start day :
+```js
+Calendar.ofMonth(2024, 2, { startWeekdayIndex: 1});
+```
+
+It will start the week at Monday. Below is the what the different values `startWeekdayIndex` means:
+
+| `startWeekdayIndex` | What it means |
+| ------------------- | ------------- |
+| 0                   | Sunday        |
+| 1                   | Monday        |
+| 2                   | Tuesday       |
+| 3                   | Wednesday     |
+| 4                   | Thursday      |
+| 5                   | Friday        |
+| 6                   | Saturday      |
+
+<details>
