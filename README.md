@@ -19,7 +19,7 @@ npm i headless-calendar
 ## An Example
 
 ```js
-import { Calendar } from './index.js';
+import { Calendar } from 'headless-calendar';
 
 // 🍁 Basic Usage
 const february = Calendar.ofMonth(2024, 2);
