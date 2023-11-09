@@ -23,14 +23,14 @@ interface Day {
 }
 
 interface Config {
-  startWeekdayIndex: number;
-  locale: string;
+  startWeekdayIndex?: number;
+  locale?: string;
 }
 
 const DEFAULT_LOCALE = 'en-US';
 const DEFAULT_START_WEEKDAY_INDEX = 0;
 
-const defaultConfig: Partial<Config> = {
+const defaultConfig: Config = {
   startWeekdayIndex: DEFAULT_START_WEEKDAY_INDEX,
   locale: DEFAULT_LOCALE
 };
@@ -38,7 +38,7 @@ const defaultConfig: Partial<Config> = {
 export class Calendar {
   private startDate: Date;
   private endDate: Date;
-  private config: Config;
+  private config: Required<Config>;
   constructor(
     startDate: FullDate,
     endDate: FullDate,
