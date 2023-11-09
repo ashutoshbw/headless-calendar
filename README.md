@@ -72,13 +72,15 @@ Next we will see how you can customize the calendar and some helpful info in que
 
 ## Customization
 
-### How to start the week on other day than Sunday?
+### How to start the week on any other day than Sunday?
 
 <details>
   <summary>Click to expand</summary>
-  You can pass config object on any `Calendar.<staticMethod>`s to set your preferred week start day :
+
+You can pass config object on any `Calendar.<staticMethod>`s to set your preferred week start day :
+
 ```js
-Calendar.ofMonth(2024, 2, { startWeekdayIndex: 1});
+Calendar.ofMonth(2024, 2, { startWeekdayIndex: 1 });
 ```
 
 It will start the week at Monday. Below is the what the different values `startWeekdayIndex` means:
