@@ -44,13 +44,13 @@ const year2042 = Calendar.ofYear(2042);
 const lastYear = Calendar.ofLastYear(); // from 364 days ago to today
 ```
 
-All `Calendar.<method>`s (namely `custom`, `ofMonth`, `ofYear` and `ofLastYear`) return a new instance of `Calendar`.
-
-If you want you can use `new Calendar()` instead of `Calendar.custom()`. For example the `someDays` can also be written like below:
+If you want you can use `new Calendar()` instead of `Calendar.custom()`. For example `someDays` can also be written like below:
 
 ```js
 const someDays = new Calendar([2024, 1, 15], [2024, 2, 1]);
 ```
+
+All `Calendar.<method>`s (namely `custom`, `ofMonth`, `ofYear` and `ofLastYear`) return a new instance of `Calendar`.
 
 From a `Calendar` instance you can easily get the number of days in it using it's `length` property. You can also get the names of days in week of that calendar using its `getWeekdayNames`. For example:
 
