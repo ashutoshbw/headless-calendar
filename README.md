@@ -52,4 +52,4 @@ const year2042 = Calendar.ofYear(2042);
 const lastYear = Calendar.ofLastYear(); // from 364 days ago to today
 ```
 
-`Calendar.custom(...)` is the same as `new Calendar()`. All `Calendar.<method>`s (namely `custom`, `ofMonth`, `ofYear` and `ofLastYear`) return an instance of `Calendar`.
+`Calendar.custom(...)` is the same as `new Calendar()`. All `Calendar.<method>`s (namely `custom`, `ofMonth`, `ofYear` and `ofLastYear`) return a new instance of `Calendar`.
