@@ -75,7 +75,7 @@ Next we will see how you can customize the calendar and some helpful info in que
 ### How to start the week on any other day than Sunday?
 
 <details>
-  <summary>Click to expand</summary>
+  <summary><h3>How to start the week on any other day than Sunday?</h3></summary>
 
 You can pass config object on any `Calendar.<staticMethod>`s to set your preferred week start day :
 
