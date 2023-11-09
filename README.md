@@ -16,7 +16,7 @@ npm i headless-calendar
 - Handy utility functions for generating calendars of your chosen _month_, _year_, or _the last year_.
 - Get day names, day numbers and month names in your chosen locale easily.
 
-## An Example
+## Basic usage
 
 ```js
 import { Calendar } from 'headless-calendar';
@@ -41,10 +41,15 @@ for (const day of february) {
     day.isFirstStartWeekdayOfMonth
   );
 }
+```
 
-// You can also get the days of a particular time period, year or even
-// last year like below and get same set of informations as shown above:
+You can also get the days of a particular time period, year or even
+last year like below and get same set of informations as shown above:
+
+```js
 const someDays = Calendar.custom([2024, 1, 15], [2024, 2, 1]);
 const year2042 = Calendar.ofYear(2042);
 const lastYear = Calendar.ofLastYear(); // from 364 days ago to today
 ```
+
+`Calendar.custom(...)` is the same as `new Calendar()`. All `Calendar.<method>`s (namely `custom`, `ofMonth`, `ofYear` and `ofLastYear`) return an instance of `Calendar`.
