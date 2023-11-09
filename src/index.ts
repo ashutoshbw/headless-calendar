@@ -22,7 +22,7 @@ interface Day {
   isFirstStartWeekdayOfMonth: boolean;
 }
 
-interface DefaultConfig {
+interface Config {
   startWeekdayIndex?: number;
   locale?: string;
 }
@@ -30,7 +30,7 @@ interface DefaultConfig {
 const DEFAULT_LOCALE = 'en-US';
 const DEFAULT_START_WEEKDAY_INDEX = 0;
 
-const defaultConfig: DefaultConfig = {
+const defaultConfig: Config = {
   startWeekdayIndex: DEFAULT_START_WEEKDAY_INDEX,
   locale: DEFAULT_LOCALE
 };

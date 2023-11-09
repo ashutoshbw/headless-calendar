@@ -16,7 +16,7 @@ describe('Calendar()', () => {
 
 describe('Calendar.ofLastYear()', () => {
   it('should have 365 days', () => {
-    const cal = Calendar.ofLastYear(2023);
+    const cal = Calendar.ofLastYear();
     expect(cal.length).toBe(365);
   });
 });
