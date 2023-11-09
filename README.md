@@ -72,18 +72,18 @@ Next we will see how you can customize the calendar and some helpful info in que
 
 ## Customization
 
-### How to start the week on any other day than Sunday?
-
 <details>
-  <summary><h3>How to start the week on any other day than Sunday?</h3></summary>
+  <summary>
+    <h3>How to customize the start weekday?</h3>
+  </summary>
 
-You can pass config object on any `Calendar.<staticMethod>`s to set your preferred week start day :
+On any `Calendar.<staticMethod>`s you can set your preferred week start day like below:
 
 ```js
 Calendar.ofMonth(2024, 2, { startWeekdayIndex: 1 });
 ```
 
-It will start the week at Monday. Below is the what the different values `startWeekdayIndex` means:
+It will use Monday as the week start day. Below is the what the different values `startWeekdayIndex` means:
 
 | `startWeekdayIndex` | What it means |
 | ------------------- | ------------- |
@@ -94,5 +94,22 @@ It will start the week at Monday. Below is the what the different values `startW
 | 4                   | Thursday      |
 | 5                   | Friday        |
 | 6                   | Saturday      |
+
+The object that you pass is called the _config_ object. Using it you can also set a different language for day, month names, which we will see next.
+
+</details>
+
+<details>
+  <summary>
+    <h3>How to get day or month names in some other language?</h3>
+  </summary>
+
+You have to set the locale. For example if you want get the day and month names in Bangla, you can do it like below:
+
+```js
+Calendar.ofMonth(2024, 2, { locale: 'bn' });
+```
+
+The default `locale` is `en-US`.
 
 </details>
