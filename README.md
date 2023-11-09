@@ -50,7 +50,7 @@ If you want you can use `new Calendar()` instead of `Calendar.custom()`. For exa
 const someDays = new Calendar([2024, 1, 15], [2024, 2, 1]);
 ```
 
-All `Calendar.<method>`s (namely `custom`, `ofMonth`, `ofYear` and `ofLastYear`) return a new instance of `Calendar`.
+All `Calendar.<staticMethod>`s (namely `custom`, `ofMonth`, `ofYear` and `ofLastYear`) return a new instance of `Calendar`.
 
 From a `Calendar` instance you can easily get the number of days in it using it's `length` property. You can also get the names of days in week of that calendar using its `getWeekdayNames`. For example:
 
