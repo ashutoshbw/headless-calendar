@@ -8,14 +8,6 @@ It's just a tiny tool to help you make your dream Calendar UI.
 npm i headless-calendar
 ```
 
-## ✨ Features
-
-- Use `for…of` loops or the spread syntax to breeze through your days.
-- It finds the position of each day in a calendar for you.
-- Set the week's starting day according to your preference.
-- Handy utility functions for generating calendars of your chosen _month_, _year_, or _the last year_.
-- Get day names, day numbers and month names in your chosen locale easily.
-
 ## Basic usage
 
 ```js
@@ -53,3 +45,21 @@ const lastYear = Calendar.ofLastYear(); // from 364 days ago to today
 ```
 
 `Calendar.custom(...)` is the same as `new Calendar()`. All `Calendar.<method>`s (namely `custom`, `ofMonth`, `ofYear` and `ofLastYear`) return a new instance of `Calendar`.
+
+From a `Calendar` instance you can easily get the number of days in it using it's `length` property. You can also get the names of days in week of that calendar using its `getWeekdayNames`. For example:
+
+```js
+console.log(lastYear.length);
+// 365
+
+console.log(lastYear.getWeekdayNames());
+// [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ]
+```
+
+If we customize the calendar to start on Monday then `lastYear.getWeekdayNames()` will produce:
+
+```js
+['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+```
+
+Next we will see how you can customize the calendar in question answer style.
