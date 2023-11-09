@@ -1,8 +1,6 @@
 export type FullDate = number[];
 
 export const ONE_DAY_IN_MILLISECONDS = 86400000;
-export const DEFAULT_LOCALE = 'en-US';
-export const DEFAULT_START_WEEKDAY_INDEX = 0;
 
 export function convertToJSDate(fullDate: FullDate) {
   const [year, month, date] = fullDate;

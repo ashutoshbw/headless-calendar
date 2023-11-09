@@ -1,8 +1,6 @@
 import {
   FullDate,
   ONE_DAY_IN_MILLISECONDS,
-  DEFAULT_LOCALE,
-  DEFAULT_START_WEEKDAY_INDEX,
   convertToJSDate,
   getCoverage,
   getRelativeWeekdayIndex,
@@ -24,17 +22,37 @@ interface Day {
   isFirstStartWeekdayOfMonth: boolean;
 }
 
+interface DefaultConfig {
+  startWeekdayIndex?: number;
+  locale?: string;
+}
+
+const DEFAULT_LOCALE = 'en-US';
+const DEFAULT_START_WEEKDAY_INDEX = 0;
+
+const defaultConfig: DefaultConfig = {
+  startWeekdayIndex: DEFAULT_START_WEEKDAY_INDEX,
+  locale: DEFAULT_LOCALE
+};
+
 export class Calendar {
   private startDate: Date;
   private endDate: Date;
+  private config;
   constructor(
     startDate: FullDate,
     endDate: FullDate,
-    private startWeekDayIndex = DEFAULT_START_WEEKDAY_INDEX,
-    private locale = DEFAULT_LOCALE
+    {
+      startWeekdayIndex = DEFAULT_START_WEEKDAY_INDEX,
+      locale = DEFAULT_LOCALE
+    } = defaultConfig
   ) {
     this.startDate = convertToJSDate(startDate);
     this.endDate = convertToJSDate(endDate);
+    this.config = {
+      startWeekdayIndex,
+      locale
+    };
 
     if (this.startDate.getTime() > this.endDate.getTime()) {
       throw new Error('startDate should be less than or equal to endDate');
@@ -52,7 +70,7 @@ export class Calendar {
       dayNames.push(
         formatDateComponent(
           new Date(Date.UTC(2023, 0, date)),
-          this.locale,
+          this.config.locale,
           'weekday',
           format
         )
@@ -60,8 +78,8 @@ export class Calendar {
     });
 
     return [
-      ...dayNames.slice(this.startWeekDayIndex),
-      ...dayNames.slice(0, this.startWeekDayIndex)
+      ...dayNames.slice(this.config.startWeekdayIndex),
+      ...dayNames.slice(0, this.config.startWeekdayIndex)
     ];
   }
 
@@ -75,20 +93,38 @@ export class Calendar {
         day: curDate.getUTCDate(),
         month: curDate.getUTCMonth() + 1,
         year: curDate.getUTCFullYear(),
-        weekdayIndex: getRelativeWeekdayIndex(curDate, this.startWeekDayIndex),
+        weekdayIndex: getRelativeWeekdayIndex(
+          curDate,
+          this.config.startWeekdayIndex
+        ),
         weekIndex: getMaxWeekIndex(
           this.startDate,
           curDate,
-          this.startWeekDayIndex
+          this.config.startWeekdayIndex
         ),
         localizedDay: (format = 'numeric') => {
-          return formatDateComponent(curDate, this.locale, 'day', format);
+          return formatDateComponent(
+            curDate,
+            this.config.locale,
+            'day',
+            format
+          );
         },
         name: (format = 'long') => {
-          return formatDateComponent(curDate, this.locale, 'weekday', format);
+          return formatDateComponent(
+            curDate,
+            this.config.locale,
+            'weekday',
+            format
+          );
         },
         monthName: (format = 'long') => {
-          return formatDateComponent(curDate, this.locale, 'month', format);
+          return formatDateComponent(
+            curDate,
+            this.config.locale,
+            'month',
+            format
+          );
         },
         get isFirstStartWeekdayOfMonth() {
           return this.weekdayIndex == 0 && this.day >= 1 && this.day <= 7;
@@ -102,8 +138,10 @@ export class Calendar {
   static ofMonth(
     year: number,
     month: number,
-    startWeekdayIndex = DEFAULT_START_WEEKDAY_INDEX,
-    locale = DEFAULT_LOCALE
+    {
+      startWeekdayIndex = DEFAULT_START_WEEKDAY_INDEX,
+      locale = DEFAULT_LOCALE
+    } = defaultConfig
   ) {
     const startDate = [year, month, 1];
     const endDate = [
@@ -111,26 +149,26 @@ export class Calendar {
       month,
       new Date(Date.UTC(year, month, 0)).getUTCDate()
     ];
-    return new Calendar(startDate, endDate, startWeekdayIndex, locale);
+    return new Calendar(startDate, endDate, { startWeekdayIndex, locale });
   }
 
   static ofYear(
     year: number,
-    startWeekDayIndex = DEFAULT_START_WEEKDAY_INDEX,
-    locale = DEFAULT_LOCALE
+    {
+      startWeekdayIndex = DEFAULT_START_WEEKDAY_INDEX,
+      locale = DEFAULT_LOCALE
+    } = defaultConfig
   ) {
-    return new Calendar(
-      [year, 1, 1],
-      [year, 12, 31],
-      startWeekDayIndex,
+    return new Calendar([year, 1, 1], [year, 12, 31], {
+      startWeekdayIndex,
       locale
-    );
+    });
   }
 
-  static ofLastYear(
+  static ofLastYear({
     startWeekdayIndex = DEFAULT_START_WEEKDAY_INDEX,
     locale = DEFAULT_LOCALE
-  ) {
+  } = defaultConfig) {
     const endDate = new Date();
     const startDate = new Date(
       endDate.getTime() - ONE_DAY_IN_MILLISECONDS * 364
@@ -138,17 +176,18 @@ export class Calendar {
     return new Calendar(
       getLocaleDateArray(startDate),
       getLocaleDateArray(endDate),
-      startWeekdayIndex,
-      locale
+      { startWeekdayIndex, locale }
     );
   }
 
   static custom(
     startDate: FullDate,
     endDate: FullDate,
-    startWeekDayIndex = DEFAULT_START_WEEKDAY_INDEX,
-    locale = DEFAULT_LOCALE
+    {
+      startWeekdayIndex = DEFAULT_START_WEEKDAY_INDEX,
+      locale = DEFAULT_LOCALE
+    } = defaultConfig
   ) {
-    return new Calendar(startDate, endDate, startWeekDayIndex, locale);
+    return new Calendar(startDate, endDate, { startWeekdayIndex, locale });
   }
 }
