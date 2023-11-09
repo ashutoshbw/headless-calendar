@@ -16,8 +16,8 @@ interface Day {
   year: number;
   weekdayIndex: number;
   weekIndex: number;
-  localizedDay: (format?: 'numeric' | '2-digit') => string;
-  name: (format?: 'long' | 'short' | 'narrow') => string;
+  dayInFormat: (format?: 'numeric' | '2-digit') => string;
+  dayName: (format?: 'long' | 'short' | 'narrow') => string;
   monthName: (format?: 'long' | 'short' | 'narrow') => string;
   isFirstStartWeekdayOfMonth: boolean;
 }
@@ -102,7 +102,7 @@ export class Calendar {
           curDate,
           this.config.startWeekdayIndex
         ),
-        localizedDay: (format = 'numeric') => {
+        dayInFormat: (format = 'numeric') => {
           return formatDateComponent(
             curDate,
             this.config.locale,
@@ -110,7 +110,7 @@ export class Calendar {
             format
           );
         },
-        name: (format = 'long') => {
+        dayName: (format = 'long') => {
           return formatDateComponent(
             curDate,
             this.config.locale,
