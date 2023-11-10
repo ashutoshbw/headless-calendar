@@ -101,7 +101,7 @@ The object that you pass is called the _config_ object. Using it you can also se
 
 <details>
   <summary>
-    <h3>How to get day or month names in some other language?</h3>
+    <h3>How to get day or month names in other languages?</h3>
   </summary>
 
 You have to set the locale. For example if you want get the day and month names in Bangla, you can do it like below:
@@ -110,6 +110,49 @@ You have to set the locale. For example if you want get the day and month names 
 Calendar.ofMonth(2024, 2, { locale: 'bn' });
 ```
 
-The default `locale` is `en-US`.
+</details>
+
+<details>
+  <summary>
+    <h3>What is the default locale used in `headless-calendar`?</h3>
+  </summary>
+
+The default `locale` used here is almost `en-u-nu-latn`. It's a bit more explicit. It uses the Gregorian Calendar and it is set in stone in `headless-calendar` so you can't alter it by passing a different calendar as unicode extension(e.g. `-u-ca-japanese`).
+
+Localization support is made using JavaScript `Intl` API.
+
+</details>
+
+<details>
+  <summary>
+    <h3>How to get day or month names in shortened form?</h3>
+  </summary>
+
+Example:
+
+```js
+const february = Calendar.ofMonth(2024, 2);
+
+february.getWeekdayNames('narrow');
+
+for (const day of february) {
+  console.log(day.dayName('short'));
+  console.log(day.monthName('short'));
+}
+```
+
+Name shortening is done using JavaScript `Intl` API. And you can use the same interface. For example:
+
+- For day names you can use `'narrow'`, `'short'` and `'long'` strings to control the name length. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#weekday) for detail.
+- For month names you can use `'narrow'`, `'short'`, `'long'`, `'numeric'` and `'2-digit'` strings to control the name length. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#month) for detail.
+
+</details>
+
+<details>
+  <summary>
+    <h3>Heading</h3>
+  </summary>
+
+bla bla
 
 </details>
