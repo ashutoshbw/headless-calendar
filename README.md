@@ -36,20 +36,23 @@ pnpm add headless-calendar
 </script>
 ```
 
-Now you can use it your script in the same way as you use it with a bundler:
+Now you can use it your script in the same way as with a bundler or with node:
 
-```js
-import { Calendar } from 'headless-calendar';
+```html
+<script type="module">
+  import { Calendar } from 'headless-calendar';
+</script>
 ```
 
 If you are new to importmap see [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap).
 
 ### Basic usage
 
+`headless-calendar` gives us a single thing named `Calendar`. Let's see how to use it.
+
 ```js
 import { Calendar } from 'headless-calendar';
 
-// 🍁 Basic Usage
 const february = Calendar.ofMonth(2024, 2);
 
 // Now you can easily get useful info for each day like below:
@@ -70,6 +73,8 @@ for (const day of february) {
   );
 }
 ```
+
+**Note**: Beside ESM, this tool also supports CommonJS style. So you can use `require('headless-calendar')` instead of importing, if you are using CommonJS style.
 
 You can also get the days of a particular time period, year or even
 last year like below and get same set of informations as shown above:
@@ -202,6 +207,12 @@ It can be useful if you want to create Github contribution calendar like thing a
 
 </details>
 
+## 🌌 Where this library is used?
+
+If you are using this library one of your projects, please add it in the list below:
+
+- Add your project link here
+
 ## License
 
-MIT
+[MIT](https://github.com/ashutoshbw/headless-calendar/blob/main/LICENSE)
