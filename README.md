@@ -77,7 +77,7 @@ Now let's see how to do some common things you might want to do and some other s
     <h3>What is a weekday exactly?</h3>
   </summary>
 
-Here the term weekday has a liitle bit different meaning than ordinary langauge. Here all 7 days makes weekdays. There is a start weekday and end weekday. The default start weekday is Sunday.
+Here the term weekday has a liitle bit different meaning than ordinary langauge. Here all 7 days make the set of weekdays. There is a start weekday and end weekday. The default start weekday is Sunday.
 
 </details>
 
@@ -130,7 +130,7 @@ Localization support is made using JavaScript `Intl` API. For more info on local
 
 The default `locale` used here is `en-u-nu-latn`. It uses the Gregorian calendar and it is set in stone in `headless-calendar` so you can't alter it by passing a different calendar as unicode extension(e.g. `en-u-nu-latn-ca-indian`).
 
-If this hypen seperated strings are new to you see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) to know more about them.
+If the hypen seperated strings are new to you see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) to know more about them.
 
 </details>
 
@@ -156,6 +156,7 @@ Name shortening is also powered by JavaScript `Intl` API. You can use the same i
 
 - For day names you can use `'narrow'`, `'short'` or `'long'` strings to control the name length. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#weekday) for more info.
 - For month names you can use `'narrow'`, `'short'`, `'long'`, `'numeric'` or `'2-digit'` strings to control the name length. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#month) for more info.
+
 </details>
 
 <details>
@@ -163,6 +164,6 @@ Name shortening is also powered by JavaScript `Intl` API. You can use the same i
     <h3>What is the use of `isFirstStartWeekdayOfMonth` property of a day?</h3>
   </summary>
 
-    It can be useful if you want to create Github Contribution calendar like thing and want to place the month names on top of days where it is the first start weekday of a month.
+It can be useful if you want to create Github Contribution calendar like thing and want to place the month names on top of days where it is the first start weekday of a month.
 
 </details>
