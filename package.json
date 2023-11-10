@@ -1,26 +1,42 @@
 {
   "name": "headless-calendar",
   "version": "1.0.0",
-  "description": "A tiny tool to help you make your dream Calendar UI.",
+  "description": "A tiny modern tool to help you easily make calendar UI.",
   "type": "module",
-  "main": "dist/index.cjs",
   "scripts": {
     "dev": "vitest",
     "test": "vitest run --reporter=verbose",
-    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "build": "tsup src/index.ts --minify --sourcemap --format cjs,esm --dts",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
     "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' '*.md' --write"
   },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "./dist/index.d.cts",
   "license": "MIT",
   "author": "Ashutosh Biswas",
   "keywords": [
     "calendar",
     "headless",
+    "headless calendar",
     "UI-agnostic",
     "day position",
     "weekday names",
-    "month names"
+    "month names",
+    "multiple languages"
   ],
   "repository": {
     "type": "git",
