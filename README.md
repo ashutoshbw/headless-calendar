@@ -1,6 +1,6 @@
-# Headless Calendar(v2.0.0)
+# Headless Calendar
 
-A modern tiny tool to help you make Calendar UI easily.
+A tiny modern tool to help you make calendar UI easily.
 
 ## Getting Started
 
