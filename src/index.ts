@@ -18,7 +18,9 @@ interface Day {
   weekIndex: number;
   dayInFormat: (format?: 'numeric' | '2-digit') => string;
   dayName: (format?: 'long' | 'short' | 'narrow') => string;
-  monthName: (format?: 'long' | 'short' | 'narrow') => string;
+  monthName: (
+    format?: 'long' | 'short' | 'narrow' | 'numeric' | '2-digit'
+  ) => string;
   isFirstStartWeekdayOfMonth: boolean;
 }
 
