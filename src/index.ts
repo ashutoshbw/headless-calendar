@@ -57,6 +57,10 @@ export class Calendar {
     if (this.startDate.getTime() > this.endDate.getTime()) {
       throw new Error('startDate should be less than or equal to endDate');
     }
+
+    if (startDate.length < 3 || endDate.length < 3) {
+      throw new Error('Input date arrays must have 3 number elements');
+    }
   }
 
   get length() {
