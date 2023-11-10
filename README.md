@@ -1,14 +1,48 @@
 # Headless Calendar(v2.0.0)
 
-It's just a tiny tool to help you make your dream Calendar UI.
+A modern tiny tool to help you make Calendar UI easily.
 
 ## Getting Started
 
-### Install
+### Installation
+
+#### npm
 
 ```bash
 npm i headless-calendar
 ```
+
+#### Yarn
+
+```bash
+yarn add headless-calendar
+```
+
+#### pnpm
+
+```bash
+pnpm add headless-calendar
+```
+
+#### HTML
+
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "headless-calendar": "https://esm.sh/headless-calendar"
+    }
+  }
+</script>
+```
+
+Now you can use it your script in the same way as you use it with a bundler:
+
+```js
+import { Calendar } from 'headless-calendar';
+```
+
+If you are new to importmap see [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap).
 
 ### Basic usage
 
@@ -70,7 +104,7 @@ If you customize the calendar to start on Monday(see Customization section for h
 ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 ```
 
-Now let's see how to do some common things you might want to do and some other stuffs.
+Let's cover the rest using the question. Click on the left triangle to expand.
 
 <details>
   <summary>
@@ -164,6 +198,10 @@ Name shortening is also powered by JavaScript `Intl` API. You can use the same i
     <h3>What is the use of `isFirstStartWeekdayOfMonth` property of a day?</h3>
   </summary>
 
-It can be useful if you want to create Github Contribution calendar like thing and want to place the month names on top of days where it is the first start weekday of a month.
+It can be useful if you want to create Github contribution calendar like thing and want to place the month names on top of days where it is the first start weekday of a month.
 
 </details>
+
+## License
+
+MIT
