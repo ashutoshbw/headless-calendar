@@ -27,7 +27,7 @@ interface Config {
   locale?: string;
 }
 
-const DEFAULT_LOCALE = 'en-US';
+const DEFAULT_LOCALE = 'en-u-nu-latn';
 const DEFAULT_START_WEEKDAY_INDEX = 0;
 
 const defaultConfig: Config = {
