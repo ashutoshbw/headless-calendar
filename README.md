@@ -227,7 +227,7 @@ Have you written a tutorial about `headless-calendar`? Add your tutorial in the 
 
 ## Where this library is used?
 
-- your project here
+- Your project here
 
 If you are using this library in one of your projects, please add your project in the list above and send a pull request(See [CONTRIBUTING.md](https://github.com/ashutoshbw/headless-calendar/blob/main/CONTRIBUTING.md) for how to)!
 
