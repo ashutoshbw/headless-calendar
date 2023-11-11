@@ -215,11 +215,21 @@ It can be useful if you want to create Github contribution calendar like thing a
 
 </details>
 
-## 🌌 Where this library is used?
+## How to contribute?
 
-If you are using this library in one of your projects, please add it in the list below:
+Found a bug? or Have an idea. See [how to contribute](https://github.com/ashutoshbw/headless-calendar/blob/main/CONTRIBUTING.md)
 
-- Here
+## Third-party tutorials
+
+- Link to your tutorial here.
+
+Have you written a tutorial about `headless-calendar`? Add your tutorial in the list above and send a pull request(See [CONTRIBUTING.md](https://github.com/ashutoshbw/headless-calendar/blob/main/CONTRIBUTING.md) for how to)!
+
+## Where this library is used?
+
+- your project here
+
+If you are using this library in one of your projects, please add your project in the list above and send a pull request(See [CONTRIBUTING.md](https://github.com/ashutoshbw/headless-calendar/blob/main/CONTRIBUTING.md) for how to)!
 
 ## License
 
