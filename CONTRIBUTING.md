@@ -39,7 +39,7 @@ Please ensure your code adheres to the existing style conventions and is accompa
 - Make sure your pull request addresses a single concern. If you have multiple changes, please submit them as separate pull requests.
 - Please be patient! We will do our best to review your pull request as soon as possible.
 
-## Other ways you can contribute
+### Other ways you can contribute
 
 - If you've incorporated headless-calendar into your project, showcase your support by featuring your project in the dedicated section of the `README.md` file!
 - We welcome contributions such as fixing typos, correcting spelling or grammatical errors in the `README.md` file. Your keen eye for detail is much appreciated!
