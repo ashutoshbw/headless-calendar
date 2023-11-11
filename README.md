@@ -36,7 +36,7 @@ pnpm add headless-calendar
 </script>
 ```
 
-Now you can use it your script in the same way as with a bundler or with node:
+Now you can use it your script in the same way as with a bundler or node in ESM way:
 
 ```html
 <script type="module">
@@ -45,6 +45,8 @@ Now you can use it your script in the same way as with a bundler or with node:
 ```
 
 If you are new to importmap see [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap).
+
+Note that if you are running it in your local machine, you will need to run it through a local web server. If if have python installed you can easily start local web server in your current directory by entering `python -m http.server 3000` from your terminal.
 
 ### Basic usage
 
