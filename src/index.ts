@@ -5,7 +5,7 @@ import {
   getCoverage,
   getRelativeWeekdayIndex,
   getMaxWeekIndex,
-  getLocaleDateArray,
+  getLocaleFullDate,
   formatDateComponent
 } from './utils.js';
 
@@ -58,10 +58,6 @@ export class Calendar {
 
     if (this.startDate.getTime() > this.endDate.getTime()) {
       throw new Error('startDate should be less than or equal to endDate');
-    }
-
-    if (startDate.length < 3 || endDate.length < 3) {
-      throw new Error('Input date arrays must have 3 number elements');
     }
   }
 
@@ -149,12 +145,12 @@ export class Calendar {
       locale = DEFAULT_LOCALE
     } = defaultConfig
   ) {
-    const startDate = [year, month, 1];
-    const endDate = [
+    const startDate = { year, month, day: 1 };
+    const endDate = {
       year,
       month,
-      new Date(Date.UTC(year, month, 0)).getUTCDate()
-    ];
+      day: new Date(Date.UTC(year, month, 0)).getUTCDate()
+    };
     return new Calendar(startDate, endDate, { startWeekdayIndex, locale });
   }
 
@@ -165,10 +161,14 @@ export class Calendar {
       locale = DEFAULT_LOCALE
     } = defaultConfig
   ) {
-    return new Calendar([year, 1, 1], [year, 12, 31], {
-      startWeekdayIndex,
-      locale
-    });
+    return new Calendar(
+      { year, month: 1, day: 1 },
+      { year, month: 12, day: 31 },
+      {
+        startWeekdayIndex,
+        locale
+      }
+    );
   }
 
   static ofLastYear({
@@ -180,8 +180,8 @@ export class Calendar {
       endDate.getTime() - ONE_DAY_IN_MILLISECONDS * 364
     );
     return new Calendar(
-      getLocaleDateArray(startDate),
-      getLocaleDateArray(endDate),
+      getLocaleFullDate(startDate),
+      getLocaleFullDate(endDate),
       { startWeekdayIndex, locale }
     );
   }

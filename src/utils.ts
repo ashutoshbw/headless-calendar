@@ -1,14 +1,21 @@
-export type FullDate = number[];
+export interface FullDate {
+  year: number;
+  month: number;
+  day: number;
+}
 
 export const ONE_DAY_IN_MILLISECONDS = 86400000;
 
 export function convertToJSDate(fullDate: FullDate) {
-  const [year, month, date] = fullDate;
-  return new Date(Date.UTC(year, month - 1, date));
+  return new Date(Date.UTC(fullDate.year, fullDate.month - 1, fullDate.day));
 }
 
-export function getLocaleDateArray(date: Date) {
-  return [date.getFullYear(), date.getMonth() + 1, date.getDate()];
+export function getLocaleFullDate(date: Date): FullDate {
+  return {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: date.getDate()
+  };
 }
 
 // This function assumes its input dates's time part having
