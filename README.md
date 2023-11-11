@@ -80,7 +80,10 @@ You can also get the days of a particular time period, year or even
 last year like below and get same set of informations as shown above:
 
 ```js
-const someDays = Calendar.custom([2024, 1, 15], [2024, 2, 1]);
+const someDays = Calendar.custom(
+  { year: 2024, month: 1, day: 15 },
+  { year: 2024, month: 2, day: 1 }
+);
 const year2042 = Calendar.ofYear(2042);
 const lastYear = Calendar.ofLastYear(); // from 364 days ago to today
 ```
@@ -88,7 +91,10 @@ const lastYear = Calendar.ofLastYear(); // from 364 days ago to today
 If you want you can use `new Calendar()` instead of `Calendar.custom()`. For example `someDays` can also be written like below:
 
 ```js
-const someDays = new Calendar([2024, 1, 15], [2024, 2, 1]);
+const someDays = new Calendar(
+  { year: 2024, month: 1, day: 15 },
+  { year: 2024, month: 2, day: 1 }
+);
 ```
 
 All `Calendar.<staticMethod>`s (namely `custom`, `ofMonth`, `ofYear` and `ofLastYear`) return a new instance of `Calendar`.
@@ -109,7 +115,7 @@ If you customize the calendar to start on Monday(see Customization section for h
 ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 ```
 
-`headless-calendar` is a very small tool. Not much to know about it. Let's cover the rest of detail using question answer format. Click on the triangle on the left to expand.
+`headless-calendar` is a very small tool. Not much to know about it. Let's cover the rest of details using question answer style. Click the triangle on left to expand.
 
 <details>
   <summary>
