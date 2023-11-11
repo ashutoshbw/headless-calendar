@@ -1,6 +1,6 @@
 # Headless Calendar
 
-A tiny modern tool to help you make calendar UI easily.
+A tiny modern tool to help you make calendar UI easily. It's goal is keep itself away as much as possible so that you can focus on the UI more.
 
 ## Getting Started
 
@@ -109,7 +109,7 @@ If you customize the calendar to start on Monday(see Customization section for h
 ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 ```
 
-Let's cover the rest using the question. Click on the left triangle to expand.
+`headless-calendar` is a very small tool. Not much to know about it. Let's cover the rest of detail using question answer format. Click on the triangle on the left to expand.
 
 <details>
   <summary>
