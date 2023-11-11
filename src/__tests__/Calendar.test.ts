@@ -5,7 +5,10 @@ import { Calendar } from '../index';
 describe('Calendar()', () => {
   it('if startDate > endDate, it should throw error "startDate should be less than or equal to endDate"', () => {
     function resultFn() {
-      new Calendar([2023, 2, 1], [2023, 1, 1]);
+      new Calendar(
+        { year: 2023, month: 2, day: 1 },
+        { year: 2023, month: 1, day: 1 }
+      );
     }
 
     expect(resultFn).toThrow(

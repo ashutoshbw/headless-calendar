@@ -3,7 +3,7 @@ import { it, expect, describe } from 'vitest';
 import {
   FullDate,
   convertToJSDate,
-  getLocaleDateArray,
+  getLocaleFullDate,
   getCoverage,
   getRelativeWeekdayIndex
 } from '../utils';
@@ -11,23 +11,17 @@ import {
 describe('convertToJSDate()', () => {
   it('month should start with 1', () => {
     const monthNumber = 1;
-    const fullDate: FullDate = [2023, monthNumber, 1];
+    const fullDate: FullDate = { year: 2023, month: monthNumber, day: 1 };
     const result = convertToJSDate(fullDate);
     expect(result.getUTCMonth()).toBe(monthNumber - 1); // in JS Date, month starts with 0
   });
 });
 
-describe('getLocaleDateArray()', () => {
+describe('getLocaleFullDate()', () => {
   it('month should start with 1', () => {
     const now = new Date();
-    const result = getLocaleDateArray(now);
-    expect(result[1]).toBe(now.getMonth() + 1); // in JS Date, month starts with 0
-  });
-
-  it('returned array should have length 3', () => {
-    const now = new Date();
-    const result = getLocaleDateArray(now);
-    expect(result.length).toBe(3);
+    const result = getLocaleFullDate(now);
+    expect(result.month).toBe(now.getMonth() + 1); // in JS Date, month starts with 0
   });
 });
 
