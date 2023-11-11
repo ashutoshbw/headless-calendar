@@ -215,9 +215,9 @@ It can be useful if you want to create Github contribution calendar like thing a
 
 ## 🌌 Where this library is used?
 
-If you are using this library one of your projects, please add it in the list below:
+If you are using this library in one of your projects, please add it in the list below:
 
-- Add your project link here
+- Here
 
 ## License
 
