@@ -1,0 +1,5 @@
+name: Publish
+on:
+  push:
+    branches:
+      - 'main'
