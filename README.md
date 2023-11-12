@@ -117,21 +117,15 @@ If you customize the calendar to start on Monday(see Customization section for h
 ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 ```
 
-`headless-calendar` is a very small tool. Not much to know about it. Let's cover the rest of details using question answer style. Click the triangle on left to expand.
+## Some questions that you might have
 
-<details>
-  <summary>
-    <h3>1. What is a weekday exactly?</h3>
-  </summary>
+`headless-calendar` is a very small tool. Not much to know about it. Let's cover the rest of details using question answer style.
 
-Here the term weekday has a liitle bit different meaning than ordinary langauge. Here all 7 days make the set of weekdays. There is a start weekday and end weekday. The default start weekday is Sunday.
+### What is a weekday exactly?
 
-</details>
+Here the term weekday has a liitle bit different meaning than ordinary langauge. Here all 7 days make the set of weekdays. There is a start weekday and an end weekday. The default start weekday is Sunday.
 
-<details>
-  <summary>
-    <h3>2. How to customize the start weekday?</h3>
-  </summary>
+### How to customize the start weekday?
 
 On any `Calendar.<staticMethod>`s you can set your preferred week start day like below:
 
@@ -153,12 +147,7 @@ It will use Monday as the week start day. Below is the what the different values
 
 The object that you pass is called the _config_ object. Using it you can also set a different language for day, month names, which we will see next.
 
-</details>
-
-<details>
-  <summary>
-    <h3>3. How to get day or month names in other languages?</h3>
-  </summary>
+### How to get day or month names in other languages?
 
 You have to set the locale as a string. For example if you want to get the day and month names in Bengali, you can do it like below:
 
@@ -172,12 +161,7 @@ for (const day of cal) {
 
 Localization support is made using JavaScript `Intl` API. For more info on locale see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
 
-</details>
-
-<details>
-  <summary>
-    <h3>4. How to get the day numbers in some particular language?</h3>
-  </summary>
+### How to get the day numbers in some particular language?
 
 You have to set the numbering system unicode extension in the locale. For example if you want to get the day and month names in English, but day numbers in Arabic, you have to use the `arab` numbering system identifer like below:
 
@@ -197,23 +181,13 @@ Localization support is made using JavaScript `Intl` API. For more info on local
 
 Note that for some languages(e.g. in `bn`) the numbering system fallbacks to the language subtag you specify. In this case if you want a differnt a numbering system you have to explicity specify it(e.g. `bn-u-nu-latn`).
 
-</details>
-
-<details>
-  <summary>
-    <h3>5. What is the default locale used in `headless-calendar`?</h3>
-  </summary>
+### What is the default locale used in `headless-calendar`?
 
 The default `locale` used here is `en-u-nu-latn`. It uses the Gregorian calendar and it is set in stone in `headless-calendar` so you can't alter it by passing a different calendar as unicode extension(e.g. `en-u-nu-latn-ca-indian`).
 
 If the hypen seperated strings are new to you see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) to know more about them.
 
-</details>
-
-<details>
-  <summary>
-    <h3>6. How to get day or month names in shortened form?</h3>
-  </summary>
+### How to get day or month names in shortened form?
 
 Example:
 
@@ -233,16 +207,9 @@ Name shortening is also powered by JavaScript `Intl` API. You can use the same i
 - For day names you can use `'narrow'`, `'short'` or `'long'` strings to control the name length. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#weekday) for more info.
 - For month names you can use `'narrow'`, `'short'`, `'long'`, `'numeric'` or `'2-digit'` strings to control the name length. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#month) for more info.
 
-</details>
-
-<details>
-  <summary>
-    <h3>7. What is the use of `isFirstStartWeekdayOfMonth` property of a day?</h3>
-  </summary>
+### What is the use of `isFirstStartWeekdayOfMonth` property of a day?
 
 It can be useful if you want to create Github contribution calendar like thing and want to place the month names on top of days where it is the first start weekday of a month.
-
-</details>
 
 ## 🤝 How to contribute?
 
