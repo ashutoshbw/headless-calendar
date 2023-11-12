@@ -4,6 +4,7 @@
 
 ### Major Changes
 
-- 42861f4: - **BREAKING CHANGE**: New friendly interface. Old interface will not work. Read the [documention](https://github.com/ashutoshbw/headless-calendar/blob/main/README.md) file learn the new interface.
-  - **Localization**: Added support of easily getting day numbers, names and month names in differrent languages using `Intl` API.
-  - **TypeScript**: Rewritten in TypeScript.
+- 42861f4: - Read the [documention](https://github.com/ashutoshbw/headless-calendar/blob/main/README.md) to learn the new interface.
+  - **New features**:
+    - Added support for easily getting day numbers, names and month names in different languages using `Intl` API.
+    - TypeScript support(the project is completely rewritten in TypeScript).
