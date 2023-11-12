@@ -9,7 +9,9 @@
     "build": "tsup src/index.ts --minify --sourcemap --format cjs,esm --dts",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' '*.md' --write"
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' '*.md' --write",
+    "CI": "pnpm run lint && pnpm run build && pnpm run test",
+    "release": "pnpm run CI && changeset publish"
   },
   "exports": {
     ".": {
