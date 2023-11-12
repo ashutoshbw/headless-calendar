@@ -2,10 +2,6 @@
 
 Thank you for considering contributing to Headless Calendar! We appreciate your time and effort.
 
-## Code of Conduct
-
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project, you agree to abide by its terms.
-
 ## How Can I Contribute?
 
 ### Reporting Bugs
@@ -30,7 +26,7 @@ If you have an idea for an enhancement, please open an issue on the [issue track
 
 Please ensure your code adheres to the existing style conventions and is accompanied by tests.
 
-### Pull Request Guidelines
+#### Pull Request Guidelines
 
 - Ensure changes adhere to project style and conventions.
 - Craft clear commit messages and summarize changes in the pull request description.
@@ -38,15 +34,5 @@ Please ensure your code adheres to the existing style conventions and is accompa
 - Update relevant documentation if your change requires it.
 - Make sure your pull request addresses a single concern. If you have multiple changes, please submit them as separate pull requests.
 - Please be patient! We will do our best to review your pull request as soon as possible.
-
-### Other ways you can contribute
-
-- If you've incorporated headless-calendar into your project, showcase your support by featuring your project in the dedicated section of the `README.md` file!
-- We welcome contributions such as fixing typos, correcting spelling or grammatical errors in the `README.md` file. Your keen eye for detail is much appreciated!
-- Teaching others how to create beautiful Calendar UI using `headless-calendar`. If you have made any educational content on it, you are most welcome to add your link of content in `README.md` file in the dedicated section.
-- Sharing it with your friends!
-- And finally, if you like the project don't forget to give it a ⭐️
-
-Note that to do modifications only on the `README.md` file, you have to follow the same steps as in [Code Contributions](#code-contributions) except test releated steps. Just make sure to patch version bump.
 
 Thank you for your contributions!
