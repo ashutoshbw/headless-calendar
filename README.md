@@ -246,7 +246,7 @@ It can be useful if you want to create Github contribution calendar like thing a
 
 ## 🤝 How to contribute?
 
-Found a bug? Or have an idea? See [how to contribute](https://github.com/ashutoshbw/headless-calendar/blob/main/CONTRIBUTING.md)
+Found a bug? Or have an idea? See [how to contribute](https://github.com/ashutoshbw/headless-calendar/blob/main/CONTRIBUTING.md).
 
 ## License
 

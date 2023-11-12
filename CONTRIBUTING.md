@@ -2,6 +2,8 @@
 
 Thank you for considering contributing to Headless Calendar! We appreciate your time and effort.
 
+Please note that this project is released with a [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md). By participating in this project, you agree to abide by its terms.
+
 ## How Can I Contribute?
 
 ### Reporting Bugs
