@@ -1,1 +1,7 @@
-node_modules/
+.changeset
+.github
+src
+tsconfig.json
+.eslintrc
+.eslintignore
+.prettierrc

@@ -1,31 +1,60 @@
 {
   "name": "headless-calendar",
   "version": "1.0.0",
-  "description": "A simple and easy to use JavaScript library that provides common calendar functionalities for making completely customizable calendar UI.",
-  "main": "cjs/index.js",
-  "module": "src/index.js",
+  "description": "A tiny modern tool to help you easily make calendar UI.",
+  "type": "module",
   "scripts": {
-    "test": "echo \"No test specified\"",
-    "clean": "shx rm -rf cjs",
-    "build": "npm run clean && babel src -d cjs",
-    "prepublishOnly": "npm run build"
+    "dev": "vitest",
+    "test": "vitest run --reporter=verbose",
+    "build": "tsup src/index.ts --minify --sourcemap --format cjs,esm --dts",
+    "lint": "eslint . --ext .ts",
+    "lint-and-fix": "eslint . --ext .ts --fix",
+    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' '*.md' --write",
+    "CI": "pnpm run lint && pnpm run build && pnpm run test",
+    "release": "pnpm run CI && changeset publish"
   },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "./dist/index.d.cts",
+  "license": "MIT",
+  "author": "Ashutosh Biswas",
   "keywords": [
     "calendar",
-    "position",
     "headless",
-    "library"
+    "headless calendar",
+    "UI-agnostic",
+    "day position",
+    "weekday names",
+    "month names",
+    "multiple languages"
   ],
-  "author": "Ashutosh Biswas (https://ashutoshbiswas.netlify.app/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ashutoshbw314/headless-calendar/issues"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ashutoshbw/headless-calendar.git"
   },
-  "repository": "github:ashutoshbw314/headless-calendar",
+  "bugs": "https://github.com/ashutoshbw/headless-calendar/issues",
   "devDependencies": {
-    "@babel/cli": "^7.13.16",
-    "@babel/plugin-transform-modules-commonjs": "^7.14.0",
-    "babel-plugin-add-module-exports": "^1.0.4",
-    "shx": "^0.3.3"
+    "@changesets/cli": "^2.26.2",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.0.3",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
   }
 }

@@ -1,317 +1,253 @@
-# Headless Calendar(v1.0.0)
-A simple and easy to use JavaScript library that provides common calendar functionalities for making completely customizable calendar UI.
+# 🗓️ Headless Calendar
 
-## 💡 Features
-* It does all the calculations for finding the position of a day in a calendar.
-* A calendar is an iterable. So you can use `for of` loop or the spread syntax to easily iterate over the days.
-* You can choose which day to start a week with.
-* Provides handy calendar classes for generating calendar of any month, year, last year or any period of time supported by original JavaScript Date object.
-* It is based on original JavaScript `Date` but provides an abstraction over by excluding all the parts that doesn't needed or are not intuitive.
+A tiny modern tool to help you make calendar UI easily. It's goal is keep itself away as much as possible so that you can focus on the UI more.
 
-## Installation
-```
+## Getting Started
+
+### Installation
+
+#### npm
+
+```bash
 npm i headless-calendar
 ```
 
-## Meet the tools  
-Classes | Description
---- | ---
-`Calendar` | It is the generic class for generating any arbitrary calendar from any date to any future date.
-`CalendarOfMonth` | It generates calendar of any given month.
-`CalendarOfYear` | It generates calendar of any given year.
-`CalendarOfLastYear` | It generates the calendar of the last year that is the calendar of last 365 days including today.
-`PlainDate` | It is a simple wrapper around the JavaScript `Date`. You can use it to find the difference between two dates, next, previous days and some other helpful things.
+#### Yarn
 
-You can fetch the above classes using both ES6 and CommonJS module syntax. 
-
-## 🦉 Concepts
-To understand how to use `headless-calendar` effectively, it will be helpful to picture a calendar as a two dimensional diagram like below:
-```
-    +-------------------------> Day Axis
-    |  0  1  2  3  4  5  6 ---> Day Axis indices. Starts with 0.
-    |  V  V  V  V  V  V  V
-    | Su Mo Tu We Th Fr Sa ---> Day Names
-    |           1  2  3  4 ---> 0
-    |  5  6  7  8  9 10 11 ---> 1
-    | 12 13 14 15 16 17 18 ---> 2
-    | 19 20 21 22 23 24 25 ---> 3
-    | 26 27 28 29 30 31    ---> 4
-    |                           |
-    V                           V
-Week Axis                Week Axis indices. Starts with 0 too.
+```bash
+yarn add headless-calendar
 ```
 
-## Examples
-```javascript
-import {CalendarOfMonth} from "headless-calendar";
+#### pnpm
 
-// generates the calendar of January of 2021
-const month = new CalendarOfMonth(2021, 1); 
-
-for (day of month) {
-  console.log(day);
-}
-
-/*
-Day {
-  date: PlainDate { year: 2021, month: 1, date: 1 },
-  dayNumber: 1,       // it counts the day
-  dayAxisIndex: 5,    // the day axis index as explained in the above diagram
-  weekAxisIndex: 0    // the week axis index as explained in the above diagram
-}
-            .
-            .
-            .
-*/
+```bash
+pnpm add headless-calendar
 ```
 
-The day object holds the necessary information about it's position on the calendar. This pattern of accessing days are same for all the calendar classes.
+#### HTML
 
-And as any calendar is an iterable you can also use it like below:
-```javascript
-// console logs only dates that are Sundays
-[...month].forEach(day => {
-  if (day.dayAxisIndex == 0) {
-    console.log(day.date.date);
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "headless-calendar": "https://esm.sh/headless-calendar"
+    }
   }
-})
+</script>
 ```
 
-## `Calendar`
-This class is used to generate a calendar starting with any date to any future date. All the other calendar classes are derived from it.
+Now you can use it your script in the same way as with a bundler or node in ESM way:
 
-Syntax:
-```
-new Calendar(startDateString, endDateString, [startWeekDayIndex])
-```
-### Parameters
-* `startDateString`(String) and `endDateString`(String): They should follow the format `year-month-date` format. Each part is expressed with digits. `endDateString` must represent a equal or later date than `startDateString`.
-* `startWeekDayIndex`(Number) *Optional*: It represents the day to start the week with. `0` means Sunday and it goes on incrementally until 6 means Saturday. 
-
-### Return value
-An iterable object. It has the following properties:
-* `startDate`: It is the `PlainDate` version of starting date.
-* `endDate`: It is the `PlainDate` version of ending date.
-* `startWeekDayIndex`: It keeps record of the `startWeekDayIndex` parameters value. It that is not provided it defaults to zero.
-* `maxWeekAxisIndex`: This returns last week's *week axis index*.
-* `weekDayNames`: It returns an array of day names with the starting day as you specified with the `startWeekDayIndex` parameter.
-* `length`: It returns the number total days in the calendar.
-
-And it has a `toString()` method for easily seeing the output of a calendar. For example:
-
-```javascript
-import {Calendar} from "headless-calendar";
-
-const cal = new Calendar("2021-1-1", "2021-2-10");
-console.log(cal.toString());
-/*
-Su Mo Tu We Th Fr Sa
-                1  2 January 2021
- 3  4  5  6  7  8  9
-10 11 12 13 14 15 16
-17 18 19 20 21 22 23
-24 25 26 27 28 29 30
-31  1  2  3  4  5  6 February
- 7  8  9 10         
-*/
+```html
+<script type="module">
+  import { Calendar } from 'headless-calendar';
+</script>
 ```
 
-The iterable is used to iterate over the days of the calendar. Each item of the sequence of this iterable is an object that represents a day. These day objects comes with the following properties and methods:
+If you are new to importmap see [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap).
 
-#### Properties
-* `date`: A `PlainDate` representing that day.
-* `dayNumber`: If it is *n*, it means it's the *n*th day of the calendar.
-* `dayAxisIndex`: It is the *day axis index* of the day as shown in diagram.
-* `weekAxisIndex`: It is the *week axis index* of the day as shown in diagram.
+Note that if you are running it in your local machine, you will need to run it through a local web server. If if have python installed you can easily start local web server in your current directory by entering `python -m http.server 3000` from your terminal.
 
-#### Methods
-* `isFirstDayOfWeekAndMonth()`: It returns a Boolean value indicating if the day is the 1st day of the week and also the 1st day of the month. This value is useful if you want to show month names right above such days.
+### Basic usage
 
-## `CalendarOfMonth`
-This class is used to generate a calendar of the specified month.
+`headless-calendar` gives us a single thing named `Calendar`. Let's see how to use it.
 
-Syntax:
-```
-new CalendarOfMonth(year, month, [startWeekDayIndex])
-```
+```js
+import { Calendar } from 'headless-calendar';
 
-### Parameters
-* `year`(Number) and `month`(Number): The year and month number for generating the calendar. Note that unlike in JavaScript, here month starts with `1`(January).
-* `startWeekDayIndex`(Number) *Optional*: It represents the day to start the week with. `0` means Sunday and it goes on incrementally until 6 means Saturday. 
+const february = Calendar.ofMonth(2024, 2);
 
-### Return value
-An iterable object with the same interface of a `Calendar` instance representing the days of the specified month.
-
-It's `toString()` method formats the calendar a little differently than the original `Calendar` class:
-```javascript
-import {CalendarOfMonth} from "headless-calendar";
-
-const month = new CalendarOfMonth(2021, 1);
-console.log(month.toString())
-
-/*
-    January 2021    
-Su Mo Tu We Th Fr Sa
-                1  2
- 3  4  5  6  7  8  9
-10 11 12 13 14 15 16
-17 18 19 20 21 22 23
-24 25 26 27 28 29 30
-31                  
-*/
+// Now you can easily get useful info for each day like below:
+for (const day of february) {
+  console.log(`-------- ${day.day} ${day.monthName()} ${day.year} --------`);
+  console.log('Number of day:', day.count);
+  console.log('Day number of current month:', day.day);
+  console.log('Day number of current month in format:', day.dayInFormat());
+  console.log('Current Month number:', day.month);
+  console.log('Current year:', day.year);
+  console.log('Where the day is in a week:', day.weekdayIndex);
+  console.log('Where the day is in terms of passed weeks:', day.weekIndex);
+  console.log('Day name:', day.dayName());
+  console.log('Current month name:', day.monthName());
+  console.log(
+    'Is it the first start weekday of current month?',
+    day.isFirstStartWeekdayOfMonth
+  );
+}
 ```
 
-## `CalendarOfYear`
-This class is used to generate a calendar of the given year.
+**Note**: Beside ESM, this tool also supports CommonJS style. So you can use `require('headless-calendar')` instead of importing, if you are using CommonJS style.
 
-Syntax:
-```
-new CalendarOfYear(year, [startWeekDayIndex])
-```
+You can also get the days of a particular time period, year or even
+last year like below and get same set of informations as shown above:
 
-### Parameters
-* `year`(Number): The year number for generating the calendar. 
-* `startWeekDayIndex`(Number) *Optional*: It represents the day to start the week with. `0` means Sunday and it goes on incrementally until 6 means Saturday. 
-
-### Return value
-An iterable object with the same interface of a `Calendar` instance, representing the days of the specified year.
-
-## `CalendarOfLastYear`
-It generates the calendar of last year, that is the calendar of last 365 days including today(according to local time).
-
-Syntax:
-```
-new CalendarOfLastYear([startWeekDayIndex])
+```js
+const someDays = Calendar.custom(
+  { year: 2024, month: 1, day: 15 },
+  { year: 2024, month: 2, day: 1 }
+);
+const year2042 = Calendar.ofYear(2042);
+const lastYear = Calendar.ofLastYear(); // from 364 days ago to today
 ```
 
-### Parameters
-* `startWeekDayIndex`(Number) *Optional*: It represents the day to start the week with. `0` means Sunday and it goes on incrementally until 6 means Saturday. 
+If you want you can use `new Calendar()` instead of `Calendar.custom()`. For example `someDays` can also be written like below:
 
-### Return value
-An iterable object with the same interface of a `Calendar` instance, representing the days of last year(last 365 days including today).
-
-## `PlainDate`
-`PlainDate` is wrapper class around the original JavaScript `Date`. It only thinks about year, month and date. No hours, minutes or others parts. 
-
-Syntax:
-```
-new PlainDate(dateString)
-```
-### Parameters
-* `dateString`(String) *Optional*: It should follow the format `year-month-date` format. Each part is expressed with digits. If it is omitted, it is treated as current date according to local time.
-
-### Return value
-An instance of `PlainDate`. It it only has three properties `year`, `month` and `date` holding the corresponding given information.
-
-A `PlainDate` instance has the following methods:
-#### `toJSDate` 
-It converts a `PlainDate` to JavaScript date.
-
-Syntax:
-```javascript
-somePlainDate.toJSDate()
-```
-##### Parameters
-No parameter
-##### Return value
-JavaScript version of the `PlainDate`.
-
-#### `equals` 
-Checks whether two `PlainDate`s are equal or not.
-
-Syntax:
-```javascript
-somePlainDate.equals(another)
-```
-##### Parameters
-* `another`(PlainDate): Another `PlainDate` value to compare to.
-##### Return value
-A Boolean value indicating whether the `PlainDate` equals `another` `PlainDate`.
-
-#### `diff`
-Returns the difference between two `PlainDate`s.
-
-Syntax:
-```
-somePlainDate.diff(another);
+```js
+const someDays = new Calendar(
+  { year: 2024, month: 1, day: 15 },
+  { year: 2024, month: 2, day: 1 }
+);
 ```
 
-##### Parameters
-* `another`(PlainDate): Another `PlainDate` value to find the difference.
-##### Return value
-The difference between the two `PlainDate`s. Note that the boundary dates are included in the counting.
+All `Calendar.<staticMethod>`s (namely `custom`, `ofMonth`, `ofYear` and `ofLastYear`) return a new instance of `Calendar`.
 
-#### `next`
-Returns the next `PlainDate`. 
+From a `Calendar` instance you can easily get the number of days in it using it's `length` property. You can also get the names of days in week of that calendar using its `getWeekdayNames`. For example:
 
-Syntax:
-```
-somePlainDate.next();
-```
+```js
+console.log(lastYear.length);
+// 365
 
-##### Parameters
-None. 
-
-##### Return value
-The next `PlainDate`.
-
-#### `previous`
-Returns the previous `PlainDate`. 
-
-Syntax:
-```
-somePlainDate.previous();
+console.log(lastYear.getWeekdayNames());
+// [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ]
 ```
 
-##### Parameters
-None. 
+If you customize the calendar to start on Monday(see Customization section for how to) then `lastYear.getWeekdayNames()` will produce:
 
-##### Return value
-The previous `PlainDate`.
-
-#### `toString`
-A string representation of the `PlainDate`. 
-
-Syntax:
-```
-somePlainDate.toString();
+```js
+['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 ```
 
-##### Parameters
-None. 
+`headless-calendar` is a very small tool. Not much to know about it. Let's cover the rest of details using question answer style. Click the triangle on left to expand.
 
-##### Return value
-A string representation of `somePlainDate` with the `year-month-date` format where each part is made of digits. `year` is full year. 
+<details>
+  <summary>
+    <h3>1. What is a weekday exactly?</h3>
+  </summary>
 
-### Static methods of `PlainDate`
-#### `fromJSDate`
-Returns a plain date from a JavaScript date.
+Here the term weekday has a liitle bit different meaning than ordinary langauge. Here all 7 days make the set of weekdays. There is a start weekday and end weekday. The default start weekday is Sunday.
 
-Syntax:
-```javascript
-PlainDate.fromJSDate(date, [UTC])
+</details>
+
+<details>
+  <summary>
+    <h3>2. How to customize the start weekday?</h3>
+  </summary>
+
+On any `Calendar.<staticMethod>`s you can set your preferred week start day like below:
+
+```js
+Calendar.ofMonth(2024, 2, { startWeekdayIndex: 1 });
 ```
 
-##### Parameters
-* `date`(Date): A JavaScript `Date` instance.
-* `UTC`(Boolean) *Optional*: By default it is `true`, that means the date is treated as UTC time. If you want local time, set it to `false`.
+It will use Monday as the week start day. Below is the what the different values `startWeekdayIndex` means:
 
-##### Return value
-The `PlainDate` version of the JavaScript date according to UTC or local time(based on the 2nd parameter).
+| `startWeekdayIndex` | What it means |
+| ------------------- | ------------- |
+| 0                   | Sunday        |
+| 1                   | Monday        |
+| 2                   | Tuesday       |
+| 3                   | Wednesday     |
+| 4                   | Thursday      |
+| 5                   | Friday        |
+| 6                   | Saturday      |
 
-#### `today`
-Returns today in `PlainDate`.
+The object that you pass is called the _config_ object. Using it you can also set a different language for day, month names, which we will see next.
 
-Syntax:
-```javascript
-PlainDate.today([UTC])
+</details>
+
+<details>
+  <summary>
+    <h3>3. How to get day or month names in other languages?</h3>
+  </summary>
+
+You have to set the locale as a string. For example if you want to get the day and month names in Bengali, you can do it like below:
+
+```js
+Calendar.ofMonth(2024, 2, { locale: 'bn' });
+
+for (const day of cal) {
+  console.log(day.dayName(), day.monthName());
+}
 ```
 
-##### Parameters
-* `UTC`(Boolean) *Optional*: By default it is `false`, that means we will get result in local time. If you want UTC time set it to `true`.
+Localization support is made using JavaScript `Intl` API. For more info on locale see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
 
-##### Return value
-Today in `PlainDate` according local time or UTC time(based on the 1st parameter).
+</details>
+
+<details>
+  <summary>
+    <h3>4. How to get the day numbers in some particular language?</h3>
+  </summary>
+
+You have to set the numbering system unicode extension in the locale. For example if you want to get the day and month names in English, but day numbers in Arabic, you have to use the `arab` numbering system identifer like below:
+
+```js
+const cal = Calendar.ofMonth(2024, 2, { locale: 'en-u-nu-arab' });
+
+for (const day of cal) {
+  console.log(day.dayInFormat());
+}
+```
+
+For the list of available numbering systems see [Supported numbering system types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getNumberingSystems#supported_numbering_system_types).
+
+In the `dayInFormat()` method you can pass `'numeric'` or '`2-digit`' to customize the output.
+
+Localization support is made using JavaScript `Intl` API. For more info on locale see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
+
+Note that for some languages(e.g. in `bn`) the numbering system fallbacks to the language subtag you specify. In this case if you want a differnt a numbering system you have to explicity specify it(e.g. `bn-u-nu-latn`).
+
+</details>
+
+<details>
+  <summary>
+    <h3>5. What is the default locale used in `headless-calendar`?</h3>
+  </summary>
+
+The default `locale` used here is `en-u-nu-latn`. It uses the Gregorian calendar and it is set in stone in `headless-calendar` so you can't alter it by passing a different calendar as unicode extension(e.g. `en-u-nu-latn-ca-indian`).
+
+If the hypen seperated strings are new to you see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) to know more about them.
+
+</details>
+
+<details>
+  <summary>
+    <h3>6. How to get day or month names in shortened form?</h3>
+  </summary>
+
+Example:
+
+```js
+const february = Calendar.ofMonth(2024, 2);
+
+february.getWeekdayNames('narrow');
+
+for (const day of february) {
+  console.log(day.dayName('short'));
+  console.log(day.monthName('short'));
+}
+```
+
+Name shortening is also powered by JavaScript `Intl` API. You can use the same interface. For example:
+
+- For day names you can use `'narrow'`, `'short'` or `'long'` strings to control the name length. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#weekday) for more info.
+- For month names you can use `'narrow'`, `'short'`, `'long'`, `'numeric'` or `'2-digit'` strings to control the name length. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#month) for more info.
+
+</details>
+
+<details>
+  <summary>
+    <h3>7. What is the use of `isFirstStartWeekdayOfMonth` property of a day?</h3>
+  </summary>
+
+It can be useful if you want to create Github contribution calendar like thing and want to place the month names on top of days where it is the first start weekday of a month.
+
+</details>
+
+## 🤝 How to contribute?
+
+Found a bug? Or have an idea? See [how to contribute](https://github.com/ashutoshbw/headless-calendar/blob/main/CONTRIBUTING.md).
 
 ## License
-MIT
+
+[MIT](https://github.com/ashutoshbw/headless-calendar/blob/main/LICENSE)
