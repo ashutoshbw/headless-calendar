@@ -1,4 +1,4 @@
-# Headless Calendar
+# 🗓️ Headless Calendar
 
 A tiny modern tool to help you make calendar UI easily. It's goal is keep itself away as much as possible so that you can focus on the UI more.
 
@@ -121,7 +121,7 @@ If you customize the calendar to start on Monday(see Customization section for h
 
 <details>
   <summary>
-    <h3>What is a weekday exactly?</h3>
+    <h3>1. What is a weekday exactly?</h3>
   </summary>
 
 Here the term weekday has a liitle bit different meaning than ordinary langauge. Here all 7 days make the set of weekdays. There is a start weekday and end weekday. The default start weekday is Sunday.
@@ -130,7 +130,7 @@ Here the term weekday has a liitle bit different meaning than ordinary langauge.
 
 <details>
   <summary>
-    <h3>How to customize the start weekday?</h3>
+    <h3>2. How to customize the start weekday?</h3>
   </summary>
 
 On any `Calendar.<staticMethod>`s you can set your preferred week start day like below:
@@ -157,7 +157,7 @@ The object that you pass is called the _config_ object. Using it you can also se
 
 <details>
   <summary>
-    <h3>How to get day or month names in other languages?</h3>
+    <h3>3. How to get day or month names in other languages?</h3>
   </summary>
 
 You have to set the locale as a string. For example if you want to get the day and month names in Bengali, you can do it like below:
@@ -176,7 +176,7 @@ Localization support is made using JavaScript `Intl` API. For more info on local
 
 <details>
   <summary>
-    <h3>How to get the day numbers in some particular language?</h3>
+    <h3>4. How to get the day numbers in some particular language?</h3>
   </summary>
 
 You have to set the numbering system unicode extension in the locale. For example if you want to get the day and month names in English, but day numbers in Arabic, you have to use the `arab` numbering system identifer like below:
@@ -189,7 +189,7 @@ for (const day of cal) {
 }
 ```
 
-For list of available numbering systems see [Supported numbering system types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getNumberingSystems#supported_numbering_system_types).
+For the list of available numbering systems see [Supported numbering system types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getNumberingSystems#supported_numbering_system_types).
 
 In the `dayInFormat()` method you can pass `'numeric'` or '`2-digit`' to customize the output.
 
@@ -201,7 +201,7 @@ Note that for some languages(e.g. in `bn`) the numbering system fallbacks to the
 
 <details>
   <summary>
-    <h3>What is the default locale used in `headless-calendar`?</h3>
+    <h3>5. What is the default locale used in `headless-calendar`?</h3>
   </summary>
 
 The default `locale` used here is `en-u-nu-latn`. It uses the Gregorian calendar and it is set in stone in `headless-calendar` so you can't alter it by passing a different calendar as unicode extension(e.g. `en-u-nu-latn-ca-indian`).
@@ -212,7 +212,7 @@ If the hypen seperated strings are new to you see [MDN](https://developer.mozill
 
 <details>
   <summary>
-    <h3>How to get day or month names in shortened form?</h3>
+    <h3>6. How to get day or month names in shortened form?</h3>
   </summary>
 
 Example:
@@ -237,14 +237,14 @@ Name shortening is also powered by JavaScript `Intl` API. You can use the same i
 
 <details>
   <summary>
-    <h3>What is the use of `isFirstStartWeekdayOfMonth` property of a day?</h3>
+    <h3>7. What is the use of `isFirstStartWeekdayOfMonth` property of a day?</h3>
   </summary>
 
 It can be useful if you want to create Github contribution calendar like thing and want to place the month names on top of days where it is the first start weekday of a month.
 
 </details>
 
-## How to contribute?
+## 🤝 How to contribute?
 
 Found a bug? Or have an idea? See [how to contribute](https://github.com/ashutoshbw/headless-calendar/blob/main/CONTRIBUTING.md)
 
