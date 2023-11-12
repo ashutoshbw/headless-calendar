@@ -172,6 +172,25 @@ Localization support is made using JavaScript `Intl` API. For more info on local
 
 <details>
   <summary>
+    <h3>How to get the day numbers of a month in some particular language?</h3>
+  </summary>
+
+You have to set the numbering system unicode extension in the locale. For example if you want to get the day and month names in English, but day numbers in Arabic, you have to use the `arab` numbering system identifer like below:
+
+```js
+Calendar.ofMonth(2024, 2, { locale: 'en-u-nu-arab' });
+```
+
+For list of available numbering systems see [Supported numbering system types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getNumberingSystems#supported_numbering_system_types).
+
+Localization support is made using JavaScript `Intl` API. For more info on locale see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
+
+Note that for some languages(e.g. in `bn`) the numbering system fallbacks to the language subtag you specify. In this case if you want a differnt a numbering system you have to explicity specify it(e.g. `bn-u-nu-latn`).
+
+</details>
+
+<details>
+  <summary>
     <h3>What is the default locale used in `headless-calendar`?</h3>
   </summary>
 
