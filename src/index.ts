@@ -22,6 +22,7 @@ interface Day {
     format?: 'long' | 'short' | 'narrow' | 'numeric' | '2-digit'
   ) => string;
   isFirstStartWeekdayOfMonth: boolean;
+  JSDate: Date;
 }
 
 interface Config {
@@ -86,6 +87,7 @@ export class Calendar {
   }
 
   *[Symbol.iterator](): Generator<Day> {
+    const config = this.config;
     const endDateTimeStamp = this.endDate.getTime();
     let curDate = this.startDate;
     let count = 1;
@@ -97,39 +99,41 @@ export class Calendar {
         year: curDate.getUTCFullYear(),
         weekdayIndex: getRelativeWeekdayIndex(
           curDate,
-          this.config.startWeekdayIndex
+          config.startWeekdayIndex
         ),
         weekIndex: getMaxWeekIndex(
           this.startDate,
           curDate,
-          this.config.startWeekdayIndex
+          config.startWeekdayIndex
         ),
-        dayInFormat: (format = 'numeric') => {
-          return formatDateComponent(
-            curDate,
-            this.config.locale,
-            'day',
-            format
-          );
+        dayInFormat(format = 'numeric') {
+          return formatDateComponent(this.JSDate, config.locale, 'day', format);
         },
-        dayName: (format = 'long') => {
+        dayName(format = 'long') {
           return formatDateComponent(
-            curDate,
-            this.config.locale,
+            this.JSDate,
+            config.locale,
             'weekday',
             format
           );
         },
-        monthName: (format = 'long') => {
+        monthName(format = 'long') {
           return formatDateComponent(
-            curDate,
-            this.config.locale,
+            this.JSDate,
+            config.locale,
             'month',
             format
           );
         },
         get isFirstStartWeekdayOfMonth() {
           return this.weekdayIndex == 0 && this.day >= 1 && this.day <= 7;
+        },
+        get JSDate() {
+          return convertToJSDate({
+            day: this.day,
+            month: this.month,
+            year: this.year
+          });
         }
       };
       curDate = new Date(curDate.getTime() + ONE_DAY_IN_MILLISECONDS);
