@@ -24,7 +24,7 @@ yarn add headless-calendar
 pnpm add headless-calendar
 ```
 
-#### HTML
+#### HTML(the modern way)
 
 ```html
 <script type="importmap">
@@ -73,13 +73,50 @@ for (const day of february) {
     'Is it the first start weekday of current month?',
     day.isFirstStartWeekdayOfMonth
   );
+  console.log('JavaScript Date object representing the day:', day.JSDate);
 }
+```
+
+Below is the output of first 2 iteration of the loop:
+
+```
+-------- 1 February 2024 --------
+Number of day: 1
+Day number of current month: 1
+Day number of current month in format: 1
+Current Month number: 2
+Current year: 2024
+Where the day is in a week: 4
+Where the day is in terms of passed weeks: 0
+Day name: Thursday
+Current month name: February
+Is it the first start weekday of current month? false
+JavaScript Date object representing the day: 2024-02-01T00:00:00.000Z
+-------- 2 February 2024 --------
+Number of day: 2
+Day number of current month: 2
+Day number of current month in format: 2
+Current Month number: 2
+Current year: 2024
+Where the day is in a week: 5
+Where the day is in terms of passed weeks: 0
+Day name: Friday
+Current month name: February
+Is it the first start weekday of current month? false
+JavaScript Date object representing the day: 2024-02-02T00:00:00.000Z
 ```
 
 **Note**: Beside ESM, this tool also supports CommonJS style. So you can use `require('headless-calendar')` instead of importing, if you are using CommonJS style.
 
-You can also get the days of a particular time period, year or even
-last year like below and get same set of informations as shown above:
+Since the `Calendar` instances are iterable you can use spread syntax too. For example:
+
+```js
+[...Calendar.ofMonth(2024, 2)].forEach((day) => {
+  // do something
+});
+```
+
+You can also get the days of a particular time period, year or even last year like below and get same set of informations as shown above:
 
 ```js
 const someDays = Calendar.custom(
