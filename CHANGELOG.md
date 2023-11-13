@@ -1,5 +1,15 @@
 # headless-calendar
 
+## 2.1.0
+
+### Minor Changes
+
+- 0dece07: Changes:
+
+  - Fixed bug #4
+  - Added `JSDate` property for days to easily get equivalent JavaScript `Date` objects
+  - Updated README
+
 ## 2.0.0
 
 ### Major Changes
