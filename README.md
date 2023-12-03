@@ -248,9 +248,9 @@ Name shortening is also powered by JavaScript `Intl` API. You can use the same i
 
 It can be useful if you want to create Github contribution calendar like thing and want to place the month names on top of days where it is the first start weekday of a month.
 
-## 🤝 How to contribute?
+## ❤️ Interested in Contributing?
 
-Found a bug? Or have an idea? See [how to contribute](https://github.com/ashutoshbw/headless-calendar/blob/main/CONTRIBUTING.md).
+See [CONTRIBUTING](https://github.com/ashutoshbw/headless-calendar/blob/main/CONTRIBUTING.md) for guidelines.
 
 ## License
 
