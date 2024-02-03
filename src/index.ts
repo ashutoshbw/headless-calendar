@@ -128,7 +128,7 @@ export class Calendar {
           return this.weekdayIndex == 0 && this.day >= 1 && this.day <= 7;
         },
         get JSDate() {
-          return convertToJSDate(`${this.day}-${this.month}-${this.year}`);
+          return convertToJSDate(`${this.year}-${this.month}-${this.day}`);
         }
       };
       curDate = new Date(curDate.getTime() + ONE_DAY_IN_MILLISECONDS);
