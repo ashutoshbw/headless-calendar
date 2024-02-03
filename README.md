@@ -1,12 +1,20 @@
 # 🗓️ Headless Calendar
 
-A little TypeScript library(**1kb** minified + gzipped) to help you make any kind of calendar UI easily. (You can use it JavaScript projects too).
+A small TypeScript library (just **1kb** when minified and gzipped) that handles the tedious calendar logic for you, freeing you to concentrate on crafting the perfect UI. (You can also utilize it in JavaScript projects).
+
+If you find this library useful, please star [this repository on GitHub](https://github.com/ashutoshbw/headless-calendar).
+
+## Motivation
+
+I love the GitHub contribution graph and wanted to create similar UIs in a customizable way. This desire led to the creation of this library, which includes a dedicated function `Calendar.ofLastYear()` to handle such tasks. However, I didn't want it to be limited to just GitHub contribution graph-like features. So I added some common functionality such as iterating over a specific month, a basic requirement for creating a date picker. Since it lacks a UI, any UI can be plugged in, making the possibilities endless.
+
+If you use it in your project, feel free to [share it with me](https://twitter.com/ashutoshbw). I would love to see what you build using it.
 
 ## Installation
 
-### Installation in Node Project
+### Installation in node project
 
-To use it in Node project, you can install it with your Node package manager. For npm the command is:
+To use it in node project, you can install it with your node package manager. For npm the command is:
 
 ```bash
 npm i headless-calendar
