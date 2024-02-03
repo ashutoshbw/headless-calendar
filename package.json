@@ -1,7 +1,7 @@
 {
   "name": "headless-calendar",
   "version": "2.1.0",
-  "description": "A tiny modern tool to help you easily make calendar UI.",
+  "description": "A small library to simplify calendar logic, letting you concentrate on the UI.",
   "type": "module",
   "scripts": {
     "dev": "vitest",
