@@ -1,9 +1,8 @@
 import { it, expect, describe } from 'vitest';
 
 import {
-  FullDate,
   convertToJSDate,
-  getLocaleFullDate,
+  getLocaleDateString,
   getCoverage,
   getRelativeWeekdayIndex
 } from '../utils';
@@ -11,17 +10,17 @@ import {
 describe('convertToJSDate()', () => {
   it('month should start with 1', () => {
     const monthNumber = 1;
-    const fullDate: FullDate = { year: 2023, month: monthNumber, day: 1 };
-    const result = convertToJSDate(fullDate);
+    const dateString = `2024-${monthNumber}-1`;
+    const result = convertToJSDate(dateString);
     expect(result.getUTCMonth()).toBe(monthNumber - 1); // in JS Date, month starts with 0
   });
 });
 
-describe('getLocaleFullDate()', () => {
+describe('getLocaleDateString()', () => {
   it('month should start with 1', () => {
     const now = new Date();
-    const result = getLocaleFullDate(now);
-    expect(result.month).toBe(now.getMonth() + 1); // in JS Date, month starts with 0
+    const month = +getLocaleDateString(now).split('-')[1];
+    expect(month).toBe(now.getMonth() + 1); // in JS Date, month starts with 0
   });
 });
 

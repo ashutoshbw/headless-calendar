@@ -6,16 +6,13 @@ export interface FullDate {
 
 export const ONE_DAY_IN_MILLISECONDS = 86400000;
 
-export function convertToJSDate(fullDate: FullDate) {
-  return new Date(Date.UTC(fullDate.year, fullDate.month - 1, fullDate.day));
+export function convertToJSDate(fullDate: string) {
+  const parts = fullDate.split('-').map((x) => +x);
+  return new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
 }
 
-export function getLocaleFullDate(date: Date): FullDate {
-  return {
-    year: date.getFullYear(),
-    month: date.getMonth() + 1,
-    day: date.getDate()
-  };
+export function getLocaleDateString(date: Date): string {
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 }
 
 // This function assumes its input dates's time part having

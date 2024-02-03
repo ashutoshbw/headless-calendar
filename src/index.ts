@@ -1,11 +1,10 @@
 import {
-  FullDate,
   ONE_DAY_IN_MILLISECONDS,
   convertToJSDate,
   getCoverage,
   getRelativeWeekdayIndex,
   getMaxWeekIndex,
-  getLocaleFullDate,
+  getLocaleDateString,
   formatDateComponent
 } from './utils.js';
 
@@ -43,8 +42,8 @@ export class Calendar {
   private endDate: Date;
   private config: Required<Config>;
   constructor(
-    startDate: FullDate,
-    endDate: FullDate,
+    startDate: string,
+    endDate: string,
     {
       startWeekdayIndex = DEFAULT_START_WEEKDAY_INDEX,
       locale = DEFAULT_LOCALE
@@ -129,11 +128,7 @@ export class Calendar {
           return this.weekdayIndex == 0 && this.day >= 1 && this.day <= 7;
         },
         get JSDate() {
-          return convertToJSDate({
-            day: this.day,
-            month: this.month,
-            year: this.year
-          });
+          return convertToJSDate(`${this.day}-${this.month}-${this.year}`);
         }
       };
       curDate = new Date(curDate.getTime() + ONE_DAY_IN_MILLISECONDS);
@@ -149,12 +144,10 @@ export class Calendar {
       locale = DEFAULT_LOCALE
     } = defaultConfig
   ) {
-    const startDate = { year, month, day: 1 };
-    const endDate = {
-      year,
-      month,
-      day: new Date(Date.UTC(year, month, 0)).getUTCDate()
-    };
+    const startDate = `${year}-${month}-${1}`;
+    const endDate = `${year}-${month}-${new Date(
+      Date.UTC(year, month, 0)
+    ).getUTCDate()}`;
     return new Calendar(startDate, endDate, { startWeekdayIndex, locale });
   }
 
@@ -165,14 +158,10 @@ export class Calendar {
       locale = DEFAULT_LOCALE
     } = defaultConfig
   ) {
-    return new Calendar(
-      { year, month: 1, day: 1 },
-      { year, month: 12, day: 31 },
-      {
-        startWeekdayIndex,
-        locale
-      }
-    );
+    return new Calendar(`${year}-1-1`, `${year}-12-31`, {
+      startWeekdayIndex,
+      locale
+    });
   }
 
   static ofLastYear({
@@ -184,15 +173,15 @@ export class Calendar {
       endDate.getTime() - ONE_DAY_IN_MILLISECONDS * 364
     );
     return new Calendar(
-      getLocaleFullDate(startDate),
-      getLocaleFullDate(endDate),
+      getLocaleDateString(startDate),
+      getLocaleDateString(endDate),
       { startWeekdayIndex, locale }
     );
   }
 
   static custom(
-    startDate: FullDate,
-    endDate: FullDate,
+    startDate: string,
+    endDate: string,
     {
       startWeekdayIndex = DEFAULT_START_WEEKDAY_INDEX,
       locale = DEFAULT_LOCALE
