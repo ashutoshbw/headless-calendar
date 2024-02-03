@@ -1,30 +1,32 @@
 # 🗓️ Headless Calendar
 
-A tiny modern tool to help you make calendar UI easily. It's goal is keep itself away as much as possible so that you can focus on the UI more.
+A little TypeScript library(**1kb** minified + gzipped) to help you make any kind of calendar UI easily. (You can use it JavaScript projects too).
 
-## Getting Started
+## Installation
 
-### Installation
+### Installation in Node Project
 
-#### npm
+To use it in Node project, you can install it with your Node package manager. For npm the command is:
 
 ```bash
 npm i headless-calendar
 ```
 
-#### Yarn
-
-```bash
-yarn add headless-calendar
-```
-
-#### pnpm
+for pnpm:
 
 ```bash
 pnpm add headless-calendar
 ```
 
-#### HTML(the modern way)
+or for yarn:
+
+```bash
+yarn add headless-calendar
+```
+
+### Can I use it in the browser without any bundlers?
+
+Of course. Add the following script element in the `<head>` of your HTML:
 
 ```html
 <script type="importmap">
@@ -44,20 +46,27 @@ Now you can use it your script in the same way as with a bundler or node in ESM 
 </script>
 ```
 
+Note that if you are running it in your local machine, you will need to run it through a local web server.
+
 If you are new to importmap see [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap).
 
-Note that if you are running it in your local machine, you will need to run it through a local web server. (For an example, if you have python installed, you can easily start a local web server at port `3000` in your current directory by entering `python -m http.server 3000` from your terminal.)
+## Usage
 
-### Basic usage
+### How to create a Calendar and iterate over days?
 
-`headless-calendar` gives us a single thing named `Calendar`. Let's see how to use it.
+`headless-calendar` provides a single entity, namely a class called `Calendar`. To use it you don't need to instanciate it directly since it offers some handy static methods to work with. Let's explore them.
 
 ```js
+// You can get Calendar In ESM sytle
 import { Calendar } from 'headless-calendar';
 
+// CommonJS style is supported too
+// const { Calendar } = require('headless-calendar');
+
+// Let's create a calendar of Ferbuary of 2024
 const february = Calendar.ofMonth(2024, 2);
 
-// Now you can easily get useful info for each day like below:
+// `february` is an iterable. You can easily get useful info for each day like below:
 for (const day of february) {
   console.log(`-------- ${day.day} ${day.monthName()} ${day.year} --------`);
   console.log('Number of day:', day.count);
@@ -106,8 +115,6 @@ Is it the first start weekday of current month? false
 JavaScript Date object representing the day: 2024-02-02T00:00:00.000Z
 ```
 
-**Note**: Beside ESM, this tool also supports CommonJS style. So you can use `require('headless-calendar')` instead of importing, if you are using CommonJS style.
-
 Since the `Calendar` instances are iterable you can use spread syntax too. For example:
 
 ```js
@@ -116,31 +123,30 @@ Since the `Calendar` instances are iterable you can use spread syntax too. For e
 });
 ```
 
-You can also get the days of a particular time period, year or even last year like below and get same set of informations as shown above:
+### Handy static methods to get a calendar of a specific period of time
+
+You can also get the days of a specific time period other than a month, like year or last year like below and get same kind of information(as shown above for `ofMonth` static method) like below:
 
 ```js
-const someDays = Calendar.custom(
-  { year: 2024, month: 1, day: 15 },
-  { year: 2024, month: 2, day: 1 }
-);
+const someDays = Calendar.custom(`2024-01-15`, `2024-02-01`);
 const year2042 = Calendar.ofYear(2042);
 const lastYear = Calendar.ofLastYear(); // from 364 days ago to today
 ```
 
-If you want you can use `new Calendar()` instead of `Calendar.custom()`. For example `someDays` can also be written like below:
+Note that `Calendar.custom(...)` is an alias of `new Calendar(...)`. So `someDays` can also be written like below:
 
 ```js
-const someDays = new Calendar(
-  { year: 2024, month: 1, day: 15 },
-  { year: 2024, month: 2, day: 1 }
-);
+const someDays = new Calendar(`2024-01-15`, `2024-02-01`);
 ```
+
+### Properites of `Calendar` instances
 
 All `Calendar.<staticMethod>`s (namely `custom`, `ofMonth`, `ofYear` and `ofLastYear`) return a new instance of `Calendar`.
 
-From a `Calendar` instance you can easily get the number of days in it using it's `length` property. You can also get the names of days in week of that calendar using its `getWeekdayNames`. For example:
+From a `Calendar` instance you can easily get the number of days in it using its `length` property. You can also get the weekday names using its `getWeekdayNames` method. For example:
 
 ```js
+const lastYear = Calendar.ofLastYear(); // from 364 days ago to today
 console.log(lastYear.length);
 // 365
 
@@ -148,29 +154,23 @@ console.log(lastYear.getWeekdayNames());
 // [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ]
 ```
 
-If you customize the calendar to start on Monday(see Customization section for how to) then `lastYear.getWeekdayNames()` will produce:
+If you customize the calendar to start on Monday(see [below](#how-to-customize-the-start-weekday) to learn how to do it). Then `lastYear.getWeekdayNames()` will produce:
 
 ```js
 ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 ```
 
-## Some questions that you might have
-
-`headless-calendar` is a very small tool. Not much to know about it. Let's cover the rest of details using question answer style.
-
-### What is a weekday exactly?
-
-Here the term weekday has a liitle bit different meaning than ordinary langauge. Here all 7 days make the set of weekdays. There is a start weekday and an end weekday. The default start weekday is Sunday.
+**Note**: Here the term weekday has a liitle bit different meaning than ordinary langauge. Here all 7 days of week are considered weekdays. There is a start weekday and an end weekday. The default start weekday is Sunday.
 
 ### How to customize the start weekday?
 
-On any `Calendar.<staticMethod>`s you can set your preferred week start day like below:
+On any `Calendar.<staticMethod>`s you can set your preferred start weekday like below:
 
 ```js
 Calendar.ofMonth(2024, 2, { startWeekdayIndex: 1 });
 ```
 
-It will use Monday as the week start day. Below is the what the different values `startWeekdayIndex` means:
+It will use Monday as the start weekday. Below is the what the different values `startWeekdayIndex` means:
 
 | `startWeekdayIndex` | What it means |
 | ------------------- | ------------- |
@@ -182,7 +182,7 @@ It will use Monday as the week start day. Below is the what the different values
 | 5                   | Friday        |
 | 6                   | Saturday      |
 
-The object that you pass is called the _config_ object. Using it you can also set a different language for day, month names, which we will see next.
+The object that you pass is called the _config_ object. Using it you can also set a different language for day names and month names. We will see that next.
 
 ### How to get day or month names in other languages?
 
