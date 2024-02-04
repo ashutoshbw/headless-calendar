@@ -150,12 +150,19 @@ Since the `Calendar` instances are iterable you can use spread syntax too. For e
 });
 ```
 
+**Note:** `headless-canledar` doesn't provide any functionality for iterating over time periods other than days (e.g., months or years).
+
 ### Handy static methods to get a calendar of a specific period of time
 
 You can also get the days of a specific time period other than a month, like year or last year like below and get same kind of information(as shown above for `ofMonth` static method) like below:
 
 ```js
 const someDays = Calendar.custom(`2024-01-15`, `2024-02-01`);
+
+// For Calendar.custom the input format is "year-month-day".
+// Leading zeros is optional. So the line below does the same thing:
+// const someDays = Calendar.custom(`2024-1-15`, `2024-2-1`);
+
 const year2042 = Calendar.ofYear(2042);
 const lastYear = Calendar.ofLastYear(); // from 364 days ago to today
 ```
