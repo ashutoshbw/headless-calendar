@@ -11,7 +11,7 @@ If you find this library useful, please star [this repository on GitHub](https:/
   - [Installation in node project](#installation-in-node-project)
   - [Can I use it in the browser without any bundlers?](#can-i-use-it-in-the-browser-without-any-bundlers)
 - [Usage](#usage)
-  - [How to create a Calendar and iterate over days?](#how-to-create-a-calendar-and-iterate-over-days)
+  - [How to create a calendar and iterate over its days?](#how-to-create-a-calendar-and-iterate-over-its-days)
   - [Handy static methods to get a calendar of a specific period of time](#handy-static-methods-to-get-a-calendar-of-a-specific-period-of-time)
   - [Properites of `Calendar` instances](#properites-of-calendar-instances)
   - [How to customize the start weekday?](#how-to-customize-the-start-weekday)
@@ -79,7 +79,7 @@ If you are new to importmap see [MDN](https://developer.mozilla.org/en-US/docs/W
 
 ## Usage
 
-### How to create a Calendar and iterate over days?
+### How to create a calendar and iterate over its days?
 
 `headless-calendar` provides a single entity, namely a class called `Calendar`. To use it you don't need to instanciate it directly since it offers some handy static methods to work with. Let's explore them.
 
