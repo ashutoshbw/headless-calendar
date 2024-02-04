@@ -160,7 +160,7 @@ You can also get the days of a specific time period other than a month, like yea
 const someDays = Calendar.custom(`2024-01-15`, `2024-02-01`);
 
 // For Calendar.custom the input format is "year-month-day".
-// Leading zeros is optional. So the line below does the same thing:
+// Leading zeros are optional. So the line below does the same thing as the above one:
 // const someDays = Calendar.custom(`2024-1-15`, `2024-2-1`);
 
 const year2042 = Calendar.ofYear(2042);
