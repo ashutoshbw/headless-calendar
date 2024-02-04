@@ -14,8 +14,7 @@
 
 ### Minor Changes
 
-- 0dece07: Changes:
-
+- 0dece07:
   - Fixed bug #4
   - Added `JSDate` property for days to easily get equivalent JavaScript `Date` objects
   - Updated README
@@ -24,7 +23,6 @@
 
 ### Major Changes
 
-- 42861f4: - Read the [documention](https://github.com/ashutoshbw/headless-calendar/blob/main/README.md) to learn the new interface.
-  - **New features**:
+- 42861f4:
     - Added support for easily getting day numbers, names and month names in different languages using `Intl` API.
     - TypeScript support(the project is completely rewritten in TypeScript).
