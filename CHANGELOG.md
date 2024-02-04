@@ -1,5 +1,15 @@
 # headless-calendar
 
+## 3.0.0
+
+### Major Changes
+
+- 2592bbb: `Calendar.custom()` or `new Calendar()` now takes date inputs as strings(of `year-month-day` format) instead of objects for easier usage.
+
+### Patch Changes
+
+- 2a5f533: (Github Actions) Updated actions/setup-node to v4
+
 ## 2.1.0
 
 ### Minor Changes
