@@ -4,6 +4,25 @@ A small TypeScript library (just **1kb** when minified and gzipped) that handles
 
 If you find this library useful, please star [this repository on GitHub](https://github.com/ashutoshbw/headless-calendar).
 
+## Table of contents
+
+- [Motivation](#motivation)
+- [Installation](#installation)
+  - [Installation in node project](#installation-in-node-project)
+  - [Can I use it in the browser without any bundlers?](#can-i-use-it-in-the-browser-without-any-bundlers)
+- [Usage](#usage)
+  - [How to create a Calendar and iterate over days?](#how-to-create-a-calendar-and-iterate-over-days)
+  - [Handy static methods to get a calendar of a specific period of time](#handy-static-methods-to-get-a-calendar-of-a-specific-period-of-time)
+  - [Properites of `Calendar` instances](#properites-of-calendar-instances)
+  - [How to customize the start weekday?](#how-to-customize-the-start-weekday)
+  - [How to get day or month names in other languages?](#how-to-get-day-or-month-names-in-other-languages)
+  - [How to get the day numbers in some particular language?](#how-to-get-the-day-numbers-in-some-particular-language)
+  - [What is the default locale used in `headless-calendar`?](#what-is-the-default-locale-used-in-headless-calendar)
+  - [How to get day or month names in shortened form?](#how-to-get-day-or-month-names-in-shortened-form)
+  - [What is the use of `isFirstStartWeekdayOfMonth` property of a day?](#what-is-the-use-of-isfirststartweekdayofmonth-property-of-a-day)
+- [❤️ Interested in contributing?](#%EF%B8%8F-interested-in-contributing)
+- [License](#license)
+
 ## Motivation
 
 I love the GitHub contribution graph and wanted to create similar UIs in a customizable way. This desire led to the creation of this library, which includes a dedicated function `Calendar.ofLastYear()` to handle such tasks. However, I didn't want it to be limited to just GitHub contribution graph-like features. So I added some common functionality such as iterating over a specific month, a basic requirement for creating a date picker. Since it lacks a UI, any UI can be plugged in, making the possibilities endless.
@@ -256,7 +275,7 @@ Name shortening is also powered by JavaScript `Intl` API. You can use the same i
 
 It can be useful if you want to create Github contribution calendar like thing and want to place the month names on top of days where it is the first start weekday of a month.
 
-## ❤️ Interested in Contributing?
+## ❤️ Interested in contributing?
 
 See [CONTRIBUTING](https://github.com/ashutoshbw/headless-calendar/blob/main/CONTRIBUTING.md) for guidelines.
 
