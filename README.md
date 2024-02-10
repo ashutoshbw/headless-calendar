@@ -150,7 +150,7 @@ Since the `Calendar` instances are iterable you can use spread syntax too. For e
 });
 ```
 
-**Note:** `headless-canledar` doesn't provide any functionality for iterating over time periods other than days (e.g., months or years).
+**Note:** `headless-canledar` doesn't provide any functionality for iterating by time periods other than days (e.g., months or years).
 
 ### Handy static methods to get a calendar of a specific period of time
 
