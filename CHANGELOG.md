@@ -1,5 +1,16 @@
 # headless-calendar
 
+## 3.1.0
+
+### Minor Changes
+
+- e5cbfc0: Exported all locally used types that is `Day` and `Config` #8.
+
+### Patch Changes
+
+- e5cbfc0: Removed unused types: `FullDate`.
+- e5cbfc0: Updated README.md.
+
 ## 3.0.0
 
 ### Major Changes
@@ -24,5 +35,5 @@
 ### Major Changes
 
 - 42861f4:
-    - Added support for easily getting day numbers, names and month names in different languages using `Intl` API.
-    - TypeScript support(the project is completely rewritten in TypeScript).
+  - Added support for easily getting day numbers, names and month names in different languages using `Intl` API.
+  - TypeScript support(the project is completely rewritten in TypeScript).
