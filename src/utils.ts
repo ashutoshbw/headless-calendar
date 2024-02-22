@@ -1,9 +1,3 @@
-export interface FullDate {
-  year: number;
-  month: number;
-  day: number;
-}
-
 export const ONE_DAY_IN_MILLISECONDS = 86400000;
 
 export function convertToJSDate(fullDate: string) {

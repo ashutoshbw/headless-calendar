@@ -8,7 +8,7 @@ import {
   formatDateComponent
 } from './utils.js';
 
-interface Day {
+export interface Day {
   count: number;
   day: number;
   month: number;
@@ -24,7 +24,7 @@ interface Day {
   JSDate: Date;
 }
 
-interface Config {
+export interface Config {
   startWeekdayIndex?: number;
   locale?: string;
 }
