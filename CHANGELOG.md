@@ -1,5 +1,11 @@
 # headless-calendar
 
+## 3.1.4
+
+### Patch Changes
+
+- 4400ba5: Another trial to fix README.md's formatting in npm.
+
 ## 3.1.3
 
 ### Patch Changes
