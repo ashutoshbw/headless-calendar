@@ -13,7 +13,7 @@ If you find this library useful, please star [this repository on GitHub](https:/
 - [Usage](#usage)
   - [How to create a calendar and iterate over its days?](#how-to-create-a-calendar-and-iterate-over-its-days)
   - [Handy static methods to get a calendar of a specific period of time](#handy-static-methods-to-get-a-calendar-of-a-specific-period-of-time)
-  - [Properties of `Calendar` instances](#properites-of-calendar-instances)
+  - [Properties of `Calendar` instances](#properties-of-calendar-instances)
   - [How to customize the start weekday?](#how-to-customize-the-start-weekday)
   - [How to get day or month names in other languages?](#how-to-get-day-or-month-names-in-other-languages)
   - [How to get the day numbers in some particular language?](#how-to-get-the-day-numbers-in-some-particular-language)
@@ -154,7 +154,7 @@ Since the `Calendar` instances are iterable you can use spread syntax too. For e
 
 If you are using TypeScript and need the type of day objects, import the type `Day` using your preferred method for importing types. Below is an example that imports both the `Calendar` class and the type `Day` using [inline type imports](https://www.typescriptlang.org/docs/handbook/2/modules.html#inline-type-imports):
 
-```ts
+```typescript
 import { Calendar, type Day } from 'headless-canledar';
 ```
 
