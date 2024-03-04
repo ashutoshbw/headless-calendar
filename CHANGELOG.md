@@ -1,5 +1,11 @@
 # headless-calendar
 
+## 3.1.3
+
+### Patch Changes
+
+- de78a7a: A trial to fix the README.md's anchor links in NPM appearing on a newline.
+
 ## 3.1.2
 
 ### Patch Changes
