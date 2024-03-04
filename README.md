@@ -240,7 +240,7 @@ for (const day of cal) {
 
 Localization support is made using JavaScript `Intl` API. For more info on locale see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
 
-The object that you pass is called the _config_ object. Using it you can also customize the start weekday. See the [above section](#how-to-customize-the-start-weekday).
+The object that you pass is called the _config_ object. Using it you can also customize the start weekday. See the above section.
 
 **Note**: The type of this _config_ object is available as the type `Config`. If you need it, you can import it similar to the type `Day`.
 
