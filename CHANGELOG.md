@@ -1,5 +1,11 @@
 # headless-calendar
 
+## 3.1.1
+
+### Patch Changes
+
+- 6b612ce: Updated documentation for exported types `Day` and `Config`.
+
 ## 3.1.0
 
 ### Minor Changes
