@@ -1,5 +1,11 @@
 # headless-calendar
 
+## 3.1.2
+
+### Patch Changes
+
+- f208272: Fixed internal link in doc.
+
 ## 3.1.1
 
 ### Patch Changes
