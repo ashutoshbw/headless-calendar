@@ -20,7 +20,7 @@ If you find this library useful, please star [this repository on GitHub](https:/
   - [What is the default locale used in `headless-calendar`?](#what-is-the-default-locale-used-in-headless-calendar)
   - [How to get day or month names in shortened form?](#how-to-get-day-or-month-names-in-shortened-form)
   - [What is the use of `isFirstStartWeekdayOfMonth` property of a day?](#what-is-the-use-of-isfirststartweekdayofmonth-property-of-a-day)
-- [❤️ Interested in contributing?](#%EF%B8%8F-interested-in-contributing)
+- [Interested in contributing?](#interested-in-contributing)
 - [License](#license)
 
 ## Motivation
@@ -294,7 +294,7 @@ Name shortening is also powered by JavaScript `Intl` API. You can use the same i
 
 It can be useful if you want to create Github contribution calendar like thing and want to place the month names on top of days where it is the first start weekday of a month.
 
-## ❤️ Interested in contributing?
+## Interested in contributing?
 
 See [CONTRIBUTING](https://github.com/ashutoshbw/headless-calendar/blob/main/CONTRIBUTING.md) for guidelines.
 
