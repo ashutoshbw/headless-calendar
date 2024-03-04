@@ -1,5 +1,11 @@
 # headless-calendar
 
+## 3.1.5
+
+### Patch Changes
+
+- dd16f59: Another try to fix README's formatting on npm.
+
 ## 3.1.4
 
 ### Patch Changes
