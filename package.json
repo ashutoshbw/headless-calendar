@@ -1,6 +1,6 @@
 {
   "name": "headless-calendar",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "A small library to simplify calendar logic, letting you concentrate on the UI.",
   "type": "module",
   "scripts": {
