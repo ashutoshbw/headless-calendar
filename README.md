@@ -152,6 +152,12 @@ Since the `Calendar` instances are iterable you can use spread syntax too. For e
 
 **Note:** `headless-canledar` doesn't provide any functionality for iterating by time periods other than days (e.g., months or years).
 
+If you are using TypeScript and need the type of day objects, import the type `Day` using your preferred method for importing types. Below is an example that imports both the `Calendar` class and the type `Day` using [inline type imports](https://www.typescriptlang.org/docs/handbook/2/modules.html#inline-type-imports):
+
+```ts
+import { Calendar, type Day } from 'headless-canledar';
+```
+
 ### Handy static methods to get a calendar of a specific period of time
 
 You can also get the days of a specific time period other than a month, like year or last year like below and get same kind of information(as shown above for `ofMonth` static method) like below:
@@ -218,6 +224,8 @@ It will use Monday as the start weekday. Below is the what the different values 
 
 The object that you pass is called the _config_ object. Using it you can also set a different language for day names and month names. We will see that next.
 
+**Note**: The type of this _config_ object is available as the type `Config`. If you need it, you can import it similar to the type `Day`.
+
 ### How to get day or month names in other languages?
 
 You have to set the locale as a string. For example if you want to get the day and month names in Bengali, you can do it like below:
@@ -231,6 +239,10 @@ for (const day of cal) {
 ```
 
 Localization support is made using JavaScript `Intl` API. For more info on locale see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
+
+The object that you pass is called the _config_ object. Using it you can also customize the start weekday. See the [above section](#how-to-customize-the-start-weekday).
+
+**Note**: The type of this _config_ object is available as the type `Config`. If you need it, you can import it similar to the type `Day`.
 
 ### How to get the day numbers in some particular language?
 
