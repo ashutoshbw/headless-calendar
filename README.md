@@ -154,7 +154,7 @@ Since the `Calendar` instances are iterable you can use spread syntax too. For e
 
 If you are using TypeScript and need the type of day objects, import the type `Day` using your preferred method for importing types. Below is an example that imports both the `Calendar` class and the type `Day` using [inline type imports](https://www.typescriptlang.org/docs/handbook/2/modules.html#inline-type-imports):
 
-```typescript
+```ts
 import { Calendar, type Day } from 'headless-canledar';
 ```
 
