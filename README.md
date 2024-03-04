@@ -13,7 +13,7 @@ If you find this library useful, please star [this repository on GitHub](https:/
 - [Usage](#usage)
   - [How to create a calendar and iterate over its days?](#how-to-create-a-calendar-and-iterate-over-its-days)
   - [Handy static methods to get a calendar of a specific period of time](#handy-static-methods-to-get-a-calendar-of-a-specific-period-of-time)
-  - [Properites of `Calendar` instances](#properites-of-calendar-instances)
+  - [Properties of `Calendar` instances](#properites-of-calendar-instances)
   - [How to customize the start weekday?](#how-to-customize-the-start-weekday)
   - [How to get day or month names in other languages?](#how-to-get-day-or-month-names-in-other-languages)
   - [How to get the day numbers in some particular language?](#how-to-get-the-day-numbers-in-some-particular-language)
@@ -173,7 +173,7 @@ Note that `Calendar.custom(...)` is an alias of `new Calendar(...)`. So `someDay
 const someDays = new Calendar(`2024-01-15`, `2024-02-01`);
 ```
 
-### Properites of `Calendar` instances
+### Properties of `Calendar` instances
 
 All `Calendar.<staticMethod>`s (namely `custom`, `ofMonth`, `ofYear` and `ofLastYear`) return a new instance of `Calendar`.
 
